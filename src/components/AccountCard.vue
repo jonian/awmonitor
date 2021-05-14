@@ -1,0 +1,106 @@
+<template>
+  <div class="bg-white border rounded-md shadow-sm dark:bg-black dark:border-gray-darkest">
+    <div class="flex p-6 border-b dark:border-gray-darkest">
+      <div class="flex flex-col flex-grow space-y-4">
+        <div class="flex items-baseline space-x-2">
+          <strong>Miner: {{ account.tag }}</strong>
+          <strong class="text-gray-dark text-sm">{{ account.name }}</strong>
+          <Icon
+            name="trash"
+            class="text-danger"
+            @click="onDelete" />
+        </div>
+        <div class="flex flex-col space-y-2 text-gray-darkest dark:text-gray-lightest">
+          <div class="flex space-x-6">
+            <Balance
+              :amount="account.tlm"
+              :decimals="4"
+              type="TLM" />
+            <Balance
+              :amount="account.wax"
+              type="WAX" />
+          </div>
+          <div class="flex items-baseline space-x-2">
+            <Icon
+              name="processor"
+              class="text-gray-dark" />
+            <span class="text-sm">CPU Staked</span>
+            <strong class="text-sm">{{ account.cpu.staked.toFixed(2) }} WAX</strong>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-nowrap items-center space-x-4">
+        <ResourceStats
+          :stats="account.cpu"
+          title="CPU"
+          metric="ms"
+          color="cyan" />
+        <ResourceStats
+          :stats="account.net"
+          title="NET"
+          metric="ms"
+          color="yellow" />
+        <ResourceStats
+          :stats="account.ram"
+          title="RAM"
+          metric="KB"
+          color="orange" />
+      </div>
+    </div>
+    <div class="flex px-6 py-4">
+      <div class="flex flex-grow items-baseline space-x-4">
+        <div class="flex items-baseline flex-nowrap space-x-2">
+          <Icon name="calendar-alt" class="text-gray-dark" />
+          <span class="text-sm">Last Mined</span>
+          <strong class="text-sm">{{ lastMinedAt }}</strong>
+        </div>
+        <div class="flex items-center space-x-1 text-xs">
+          <Tag
+            v-for="mine in account.history"
+            :key="mine.last_mine_tx"
+            :text="mine.info.quantity" />
+        </div>
+      </div>
+      <div class="flex items-baseline justify-between space-x-4 font-semibold text-primary">
+        <div
+          v-for="link in links"
+          :key="link.href"
+          class="flex flex-nowrap items-baseline space-x-2">
+          <Icon name="external-link-alt" />
+          <a :href="link.href" target="_blank" class="text-sm">{{ link.text }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'AccountCard',
+  props: {
+    account: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    links() {
+      return [
+        { text: 'View on Bloks', href: `https://wax.bloks.io/account/${this.account.name}` },
+        { text: 'View NFT', href: `https://wax.atomichub.io/explorer/account/${this.account.name}` }
+      ]
+    },
+    lastMinedAt() {
+      const date = new Date(this.account.lastMine.last_mine)
+      const time = date.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' })
+
+      return `${date.toDateString()} ${time}`
+    }
+  },
+  methods: {
+    onDelete() {
+      return this.$emit('delete', this.account)
+    }
+  }
+}
+</script>
