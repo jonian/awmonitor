@@ -24,9 +24,21 @@ export default {
       default: null
     }
   },
+  watch: {
+    value(newValue, oldValue) {
+      if (newValue != oldValue) {
+        this.updateValue(newValue)
+      }
+    }
+  },
   data() {
     return {
       gauge: null
+    }
+  },
+  methods: {
+    updateValue(value) {
+      return this.gauge && this.gauge.setValueAnimated(value, 1)
     }
   },
   mounted() {
@@ -34,9 +46,11 @@ export default {
       max: 100,
       dialStartAngle: -90,
       dialEndAngle: -90.001,
-      value: this.value,
+      value: 0,
       label: () => `${Math.round(this.value)}%`
     })
+
+    this.updateValue(this.value)
   }
 }
 </script>
