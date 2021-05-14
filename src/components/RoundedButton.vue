@@ -1,7 +1,6 @@
 <template>
   <button
     :style="{ borderColor: 'currentColor' }"
-    :class="typeClass"
     class="rounded-full border px-6 py-2">
     <span class="flex flex-nowrap items-baseline space-x-2">
       <Icon
