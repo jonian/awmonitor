@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 border-b bg-white dark:bg-black dark:border-gray-darkest">
+  <header class="sticky top-0 z-50 border-b bg-white dark:bg-black dark:border-gray-darkest">
     <div class="flex items-center justify-between container py-4">
       <div class="flex flex-nowrap items-center space-x-2">
         <img
