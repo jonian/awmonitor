@@ -1,12 +1,46 @@
 <template>
   <header class="sticky top-0 border-b bg-white dark:bg-black dark:border-gray-darkest">
-    <div class="flex items-center justify-between container py-2">
+    <div class="flex items-center justify-between container py-4">
+      <div class="flex flex-nowrap items-center space-x-2">
+        <img
+          :alt="title"
+          src="/logo.svg"
+          class="w-5" />
+        <h1 class="font-bold text-xl">{{ title }}</h1>
+      </div>
+      <div class="flex space-x-6">
+        <RoundedButton
+          class="text-primary"
+          icon="share-alt"
+          @click="onShareClick">
+          Share
+        </RoundedButton>
+        <RoundedButton
+          class="text-success"
+          icon="redo"
+          @click="onRefreshClick">
+          Refresh
+        </RoundedButton>
+      </div>
     </div>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data() {
+    return {
+      title: 'AW Monitor'
+    }
+  },
+  methods: {
+    onShareClick() {
+      this.$emit('share')
+    },
+    onRefreshClick() {
+      this.$emit('refresh')
+    }
+  }
 }
 </script>
