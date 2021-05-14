@@ -1,4 +1,4 @@
-import { ref, reactive, computed } from 'vue'
+import { reactive, computed } from 'vue'
 import { wax, pink, eosrio, greymass } from '@/apis'
 
 const parseAmount = val => val ? parseFloat(val.slice(0, -4)) : 0.0
@@ -45,11 +45,9 @@ const parseRamLimit = ({ ram_quota, ram_usage, total_resources }) => {
 export default class Account {
   constructor(name) {
     this.name = name
-    this.loading = ref(false)
-    this.error = ref(null)
-    this.history = ref([])
-
     this.data = reactive({
+      loading: false,
+      error: null,
       account: {},
       player: {},
       history: [],
@@ -64,15 +62,18 @@ export default class Account {
     this.net = computed(() => parseLimit('net', this.data.account))
     this.ram = computed(() => parseRamLimit(this.data.account))
 
+    this.loading = computed(() => this.data.loading)
+    this.error = computed(() => this.data.error)
+
     this.history = computed(() => this.data.history)
     this.lastMine = computed(() => this.data.history.slice(-1)[0])
 
     this.update()
   }
 
-  async update() {
-    this.error.value = null
-    this.loading.value = true
+  async update(refresh = false) {
+    this.data.error = null
+    this.data.loading = refresh ? false : true
 
     try {
       await this._updateAccount()
@@ -81,9 +82,9 @@ export default class Account {
       await this._updatePlayer()
       await this._updateMiner()
     } catch (err) {
-      this.error.value = err
+      this.data.error = err
     } finally {
-      this.loading.value = false
+      this.data.loading = false
     }
   }
 
@@ -110,6 +111,8 @@ export default class Account {
     const data = await pink.getMiner(this.name)
     const mine = await parseTransaction(data.rows[0])
 
-    this.data.history = this.data.history.concat(mine).splice(-5)
+    if (!this.data.history.some(item => item.last_mine_tx == mine.last_mine_tx)) {
+      this.data.history = this.data.history.concat(mine).splice(-5)
+    }
   }
 }
