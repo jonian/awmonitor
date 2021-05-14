@@ -27,10 +27,22 @@ export default {
     decimals: {
       type: Number,
       default: 2
-    },
-    change: {
-      type: Number,
-      default: 0
+    }
+  },
+  watch: {
+    amount(newValue, oldValue) {
+      if (newValue > oldValue) {
+        this.change = 1
+      } else if (newValue < oldValue) {
+        this.change = -1
+      } else {
+        this.change = 0
+      }
+    }
+  },
+  data() {
+    return {
+      change: 0
     }
   },
   computed: {
