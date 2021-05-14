@@ -6,7 +6,7 @@
           :alt="title"
           src="/logo.svg"
           class="w-5" />
-        <h1 class="font-bold text-xl">{{ title }}</h1>
+        <h1 class="font-bold text-2xl">{{ title }}</h1>
       </div>
       <div class="flex space-x-6">
         <RoundedButton

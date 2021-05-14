@@ -10,6 +10,9 @@ module.exports = {
   },
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Source Sans Pro', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      },
       borderColor: {
         DEFAULT: '#E0E0E0'
       }

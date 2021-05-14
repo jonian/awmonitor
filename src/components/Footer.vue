@@ -6,15 +6,15 @@
         target="_blank"
         class="flex flex-nowrap items-center space-x-2">
         <Icon name="github" class="text-gray-light transform scale-125" />
-        <span class="text-xs">View on GitHub</span>
+        <span class="text-sm">View on GitHub</span>
       </a>
       <a
         href="https://vuejs.org"
         target="_blank"
         class="flex flex-nowrap items-center space-x-2">
-        <span class="text-xs">Created with</span>
+        <span class="text-sm">Created with</span>
         <Icon name="vuejs" class="text-gray-light transform scale-125" />
-        <span class="text-xs">Vue.js</span>
+        <span class="text-sm">Vue.js</span>
       </a>
     </div>
   </footer>
