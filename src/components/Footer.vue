@@ -5,7 +5,7 @@
         href="https://github.com/jonian/awmonitor"
         target="_blank"
         class="flex flex-nowrap items-center space-x-2">
-        <Icon name="github" class="text-gray-light transform scale-125" />
+        <Icon name="github" class="text-gray-light dark:text-gray-darker transform scale-125" />
         <span class="text-sm">View on GitHub</span>
       </a>
       <a
@@ -13,7 +13,7 @@
         target="_blank"
         class="flex flex-nowrap items-center space-x-2">
         <span class="text-sm">Created with</span>
-        <Icon name="vuejs" class="text-gray-light transform scale-125" />
+        <Icon name="vuejs" class="text-gray-light dark:text-gray-darker transform scale-125" />
         <span class="text-sm">Vue.js</span>
       </a>
     </div>
