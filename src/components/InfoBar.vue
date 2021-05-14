@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-gray-darkest text-white border-b border-gray-darkest dark:bg-black">
-    <div class="flex items-center justify-between container py-2">
+  <div class="border-b dark:bg-black dark:border-gray-darkest">
+    <div class="flex items-center justify-between container py-4">
     </div>
   </div>
 </template>

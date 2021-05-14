@@ -1,5 +1,5 @@
 <template>
-  <footer class="border-t bg-white text-gray-darker dark:bg-black dark:border-gray-darkest">
+  <footer class="border-t text-gray-dark dark:bg-black dark:border-gray-darkest">
     <div class="flex items-center justify-between container py-4">
       <a
         href="https://github.com/jonian/awmonitor"
