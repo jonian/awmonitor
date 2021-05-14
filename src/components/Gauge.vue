@@ -1,6 +1,5 @@
 <template>
   <div
-    :class="color"
     :style="{ width: size, height: size }"
     ref="gauge" />
 </template>
@@ -18,10 +17,6 @@ export default {
     size: {
       type: String,
       default: '4rem'
-    },
-    color: {
-      type: String,
-      default: null
     }
   },
   watch: {
@@ -70,24 +65,12 @@ export default {
   }
 
   .value {
-    stroke: theme('colors.primary');
+    stroke: currentColor;
   }
 
   .value-text {
     fill: theme('colors.black');
   }
-}
-
-.cyan .gauge .value {
-  stroke: theme('colors.cyan');
-}
-
-.orange .gauge .value {
-  stroke: theme('colors.orange');
-}
-
-.yellow .gauge .value {
-  stroke: theme('colors.yellow');
 }
 
 .dark .gauge {

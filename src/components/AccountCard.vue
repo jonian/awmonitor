@@ -34,17 +34,17 @@
           :stats="account.cpu"
           title="CPU"
           metric="ms"
-          color="cyan" />
+          class="text-cyan" />
         <ResourceStats
           :stats="account.net"
           title="NET"
           metric="ms"
-          color="yellow" />
+          class="text-yellow" />
         <ResourceStats
           :stats="account.ram"
           title="RAM"
           metric="KB"
-          color="orange" />
+          class="text-orange" />
       </div>
     </div>
     <div class="flex px-6 py-4">

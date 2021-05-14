@@ -4,7 +4,7 @@
       :color="color"
       :value="stats.percent" />
     <div class="flex flex-col items-center text-xs">
-      <span class="font-bold">
+      <span class="font-bold text-gray-darkest dark:text-gray-lightest">
         {{ title }}
       </span>
       <span
