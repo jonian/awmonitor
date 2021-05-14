@@ -1,9 +1,11 @@
 <template>
   <div class="flex flex-nowrap items-center space-x-2">
-    <img
-      :src="imagePath"
-      :alt="type"
-      :style="{ width: '1rem', height: '1rem' }">
+    <slot>
+      <img
+        :src="imagePath"
+        :alt="type"
+        :style="{ width: '1rem', height: '1rem' }">
+    </slot>
     <span class="text-sm">{{ type }} Total</span>
     <strong class="text-sm">{{ amount.toFixed(decimals) }}</strong>
     <Icon
