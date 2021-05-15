@@ -1,5 +1,7 @@
 <template>
-  <div class="flex items-center justify-between p-8 bg-primary text-white rounded-md shadow-sm">
+  <div
+    v-if="showTip"
+    class="flex items-center justify-between p-8 bg-primary text-white rounded-md shadow-sm">
     <h2 class="text-2xl font-bold">Do you like this project?</h2>
     <RoundedButton
       icon="smile"
@@ -7,14 +9,52 @@
       Send a tip
     </RoundedButton>
   </div>
+  <Dialog
+    v-model="showDialog"
+    :cancel-button="false"
+    confirm-button="Done"
+    size="small"
+    title="Send WAXP Tokens"
+    class="dark text-white"
+    @confirm="onConfirm">
+    <div class="flex flex-col items-center justify-center my-4 space-y-4">
+      <img
+        :src="qrCodeUrl"
+        width="250"
+        height="250"
+        class="max-w-full h-auto rounded-3xl" />
+      <strong class="block text-lg">
+        WAX Account Name: {{ account }}
+      </strong>
+    </div>
+  </Dialog>
 </template>
 
 <script>
+import { showTip } from '@/store'
+
 export default {
   name: 'SupportCard',
+  data() {
+    return {
+      showDialog: false,
+      account: 'la1dk.wam'
+    }
+  },
+  computed: {
+    showTip() {
+      return showTip.value
+    },
+    qrCodeUrl() {
+      return `https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=${this.account}&choe=UTF-8`
+    }
+  },
   methods: {
     onSendClick() {
-      this.$emit('send')
+      this.showDialog = true
+    },
+    onConfirm() {
+      showTip.value = false
     }
   }
 }

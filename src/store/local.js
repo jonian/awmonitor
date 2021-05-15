@@ -14,3 +14,8 @@ export const accountNames = useStorage(
   'account-names',
   []
 )
+
+export const showTip = useStorage(
+  'show-tip',
+  true
+)
