@@ -9,6 +9,17 @@
       Send a tip
     </RoundedButton>
   </div>
+  <div
+    v-else
+    class="flex items-center justify-between text-gray-light dark:text-gray-darker">
+    <span>Do you like this project?</span>
+    <span
+      class="flex items-center space-x-2 cursor-pointer"
+      @click="onSendClick">
+      <Icon name="smile" />
+      <span>Send a tip</span>
+    </span>
+  </div>
   <Dialog
     v-model="showDialog"
     :cancel-button="false"
