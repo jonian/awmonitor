@@ -18,6 +18,15 @@
       :account="account" />
     <SupportCard />
   </div>
+  <Dialog
+    v-model="showAccountDialog"
+    title="Add Account"
+    @confirm="onAddConfirm"
+    @cancel="newAccount = null">
+    <FormInput
+      v-model="newAccount"
+      placeholder="myaccount.wam" />
+  </Dialog>
 </template>
 
 <script>
@@ -26,6 +35,7 @@ export default {
   inject: ['$app'],
   data() {
     return {
+      showAccountDialog: false,
       newAccount: null
     }
   },
@@ -39,6 +49,9 @@ export default {
   },
   methods: {
     onAddAccount() {
+      this.showAccountDialog = true
+    },
+    onAddConfirm() {
       if (this.newAccount) {
         this.$app.addAccount(this.newAccount)
         this.newAccount = null

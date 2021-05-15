@@ -96,6 +96,8 @@ export default {
     },
     addAccount(name) {
       const account = new Account(name)
+      account.update()
+
       this.accounts.push(account)
       this.saveAccountNames()
     },
