@@ -2,7 +2,7 @@
   <button
     :class="{ 'opacity-50': disabled, 'pointer-events-none': disabled }"
     class="rounded-md px-4 py-2 outline-none focus:outline-none">
-    <span class="flex flex-nowrap items-baseline space-x-2">
+    <span class="flex flex-nowrap items-baseline justify-center space-x-2">
       <Icon
         v-if="icon"
         :name="icon" />
