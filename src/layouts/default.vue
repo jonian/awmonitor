@@ -3,7 +3,7 @@
     <Header />
     <InfoBar />
     <main class="flex items-stretch flex-grow">
-      <div class="container py-16">
+      <div class="container py-12">
         <router-view />
       </div>
     </main>
