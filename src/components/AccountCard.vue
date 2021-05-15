@@ -55,10 +55,13 @@
           <strong class="text-sm">{{ lastMinedAt }}</strong>
         </div>
         <div class="flex items-center space-x-1 text-xs">
-          <Tag
+          <a
             v-for="mine in account.history"
             :key="mine.last_mine_tx"
-            :text="mine.info.quantity" />
+            :href="transactionLink(mine.last_mine_tx)"
+            target="_blank">
+            <Tag :text="mine.info.quantity" />
+          </a>
         </div>
       </div>
       <div class="flex items-baseline justify-between space-x-4 font-semibold text-primary">
@@ -101,6 +104,9 @@ export default {
   methods: {
     onDelete() {
       return this.$app.removeAccount(this.account.name)
+    },
+    transactionLink(id) {
+      return `https://wax.bloks.io/transaction/${id}`
     }
   }
 }
