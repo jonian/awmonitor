@@ -29,6 +29,7 @@
 <script>
 export default {
   name: 'Header',
+  inject: ['$app'],
   data() {
     return {
       title: 'AW Monitor'
@@ -36,10 +37,10 @@ export default {
   },
   methods: {
     onShareClick() {
-      this.$emit('share')
+      this.$app.share()
     },
     onRefreshClick() {
-      this.$emit('refresh')
+      this.$app.refresh()
     }
   }
 }

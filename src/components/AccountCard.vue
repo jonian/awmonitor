@@ -7,7 +7,7 @@
           <strong class="text-gray-dark text-sm">{{ account.name }}</strong>
           <Icon
             name="trash"
-            class="text-danger"
+            class="text-danger cursor-pointer"
             @click="onDelete" />
         </div>
         <div class="flex flex-col space-y-2 text-gray-darkest dark:text-gray-lightest">
@@ -77,6 +77,7 @@
 <script>
 export default {
   name: 'AccountCard',
+  inject: ['$app'],
   props: {
     account: {
       type: Object,
@@ -99,7 +100,7 @@ export default {
   },
   methods: {
     onDelete() {
-      return this.$emit('delete', this.account)
+      return this.$app.removeAccount(this.account.name)
     }
   }
 }
