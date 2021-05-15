@@ -30,6 +30,8 @@ const parseLimit = (key, data) => {
     const percent = Math.round(limit.used / limit.max * 100)
 
     return { ...limit, percent, staked }
+  } else {
+    return { used: 0, available: 0, max: 0, percent: 0, staked: 0 }
   }
 }
 
@@ -39,6 +41,8 @@ const parseRamLimit = ({ ram_quota, ram_usage, total_resources }) => {
     const available = total_resources.ram_bytes
 
     return { used: ram_usage, available, max: ram_quota, percent, staked: 0 }
+  } else {
+    return { used: 0, available: 0, max: 0, percent: 0, staked: 0 }
   }
 }
 
@@ -49,10 +53,10 @@ export default class Account {
       loading: false,
       error: null,
       account: {},
-      player: {},
       history: [],
-      tlm: {},
-      wax: {}
+      player: { tag: 'player' },
+      tlm: { amount: 0 },
+      wax: { amount: 0 }
     })
 
     this.tag = computed(() => this.data.player.tag)
@@ -76,11 +80,11 @@ export default class Account {
     this.data.loading = refresh ? false : true
 
     try {
-      await this._updateAccount()
+      await this._updatePlayer()
       await this._updateTLM()
       await this._updateWAX()
-      await this._updatePlayer()
       await this._updateMiner()
+      await this._updateAccount()
     } catch (err) {
       this.data.error = err
     } finally {

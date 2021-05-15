@@ -95,10 +95,14 @@ export default {
       ]
     },
     lastMinedAt() {
-      const date = new Date(this.account.lastMine.last_mine)
-      const time = date.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' })
+      if (this.account.loading) {
+        return 'Loading...'
+      } else {
+        const date = new Date(this.account.lastMine.last_mine)
+        const time = date.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' })
 
-      return `${date.toDateString()} ${time}`
+        return `${date.toDateString()} ${time}`
+      }
     }
   },
   methods: {

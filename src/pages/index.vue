@@ -12,12 +12,10 @@
     </span>
   </div>
   <div class="flex flex-col space-y-6">
-    <template v-for="account in $app.accounts">
-      <AccountCard
-        v-if="!account.loading && !account.error"
-        :key="account.name"
-        :account="account" />
-    </template>
+    <AccountCard
+      v-for="account in $app.accounts"
+      :key="account.name"
+      :account="account" />
     <SupportCard />
   </div>
 </template>
