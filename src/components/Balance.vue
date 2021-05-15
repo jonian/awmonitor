@@ -7,7 +7,7 @@
         :style="{ width: '1rem', height: '1rem' }">
     </slot>
     <span class="text-sm">{{ type }} Total</span>
-    <strong class="text-sm">{{ amount.toFixed(decimals) }}</strong>
+    <strong class="text-sm">{{ value.toFixed(decimals) }}</strong>
     <Icon
       v-bind="iconAttrs"
       class="transform scale-150" />
@@ -24,7 +24,7 @@ export default {
     },
     amount: {
       type: Number,
-      required: true
+      default: null
     },
     decimals: {
       type: Number,
@@ -33,12 +33,12 @@ export default {
   },
   watch: {
     amount(newValue, oldValue) {
-      if (newValue > oldValue) {
-        this.change = 1
-      } else if (newValue < oldValue) {
-        this.change = -1
-      } else {
+      if (oldValue == null || newValue == oldValue) {
         this.change = 0
+      } else if (newValue > oldValue) {
+        this.change = 1
+      } else {
+        this.change = -1
       }
     }
   },
@@ -48,6 +48,9 @@ export default {
     }
   },
   computed: {
+    value() {
+      return this.amount || 0
+    },
     imagePath() {
       return `/${this.type.toLowerCase()}.png`
     },

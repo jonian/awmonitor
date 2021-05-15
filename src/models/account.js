@@ -56,8 +56,8 @@ export default class Account {
       history: [],
       lastMine: null,
       player: { tag: 'player' },
-      tlm: { amount: 0 },
-      wax: { amount: 0 }
+      tlm: {},
+      wax: {}
     })
 
     this.tag = computed(() => this.data.player.tag)

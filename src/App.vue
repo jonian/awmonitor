@@ -19,6 +19,8 @@ export default {
       updateId: null,
       moneyType: 'USDT',
       tlmPrice: 0,
+      totalTLM: null,
+      totalWAX: null,
       accounts: []
     }
   },
@@ -26,14 +28,8 @@ export default {
     loading() {
       return this.accounts.some(({ loading }) => loading)
     },
-    totalTLM() {
-      return this.sumAmounts('tlm')
-    },
-    totalWAX() {
-      return this.sumAmounts('wax')
-    },
     totalMoney() {
-      return this.totalTLM * this.tlmPrice
+      return this.totalTLM ? this.totalTLM * this.tlmPrice : null
     }
   },
   methods: {
@@ -44,6 +40,18 @@ export default {
       } catch (e) {
         this.tlmPrice = 0
       }
+    },
+    async updateAccounts() {
+      const lastIdx = this.accounts.length - 1
+
+      this.accounts.forEach(async (account, index) => {
+        await account.update()
+
+        if (index == lastIdx) {
+          this.totalTLM = this.sumAmounts('tlm')
+          this.totalWAX = this.sumAmounts('wax')
+        }
+      })
     },
     sumAmounts(key) {
       return this.accounts.reduce((total, item) => {
@@ -56,7 +64,7 @@ export default {
     },
     refresh() {
       this.updateTlmPrice()
-      this.accounts.forEach(account => account.update())
+      this.updateAccounts()
 
       this.updatedAt = new Date()
       this.scheduleRefresh()
