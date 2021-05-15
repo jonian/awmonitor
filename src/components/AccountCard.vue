@@ -95,7 +95,7 @@ export default {
       ]
     },
     lastMinedAt() {
-      if (this.account.loading) {
+      if (!this.account.lastMine) {
         return 'Loading...'
       } else {
         const date = new Date(this.account.lastMine.last_mine)

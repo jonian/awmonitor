@@ -54,6 +54,7 @@ export default class Account {
       error: null,
       account: {},
       history: [],
+      lastMine: null,
       player: { tag: 'player' },
       tlm: { amount: 0 },
       wax: { amount: 0 }
@@ -70,17 +71,29 @@ export default class Account {
     this.error = computed(() => this.data.error)
 
     this.history = computed(() => this.data.history)
-    this.lastMine = computed(() => this.data.history.slice(-1)[0])
+    this.lastMine = computed(() => this.data.lastMine)
 
-    this.update()
+    this.init()
   }
 
-  async update(refresh = false) {
+  async init() {
     this.data.error = null
-    this.data.loading = refresh ? false : true
+    this.data.loading = true
 
     try {
       await this._updatePlayer()
+    } catch (err) {
+      this.data.error = err
+    } finally {
+      this.data.loading = false
+    }
+  }
+
+  async update() {
+    this.data.error = null
+    this.data.loading = true
+
+    try {
       await this._updateTLM()
       await this._updateWAX()
       await this._updateMiner()
@@ -114,6 +127,8 @@ export default class Account {
   async _updateMiner() {
     const data = await pink.getMiner(this.name)
     const mine = await parseTransaction(data.rows[0])
+
+    this.data.lastMine = mine
 
     if (!this.data.history.some(item => item.last_mine_tx == mine.last_mine_tx)) {
       this.data.history = this.data.history.concat(mine).splice(-5)

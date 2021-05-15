@@ -56,7 +56,7 @@ export default {
     },
     refresh() {
       this.updateTlmPrice()
-      this.accounts.forEach(account => account.update(true))
+      this.accounts.forEach(account => account.update())
 
       this.updatedAt = new Date()
       this.scheduleRefresh()
@@ -75,8 +75,7 @@ export default {
     }
   },
   mounted() {
-    this.updateTlmPrice()
-    this.scheduleRefresh()
+    this.refresh()
   }
 }
 </script>
