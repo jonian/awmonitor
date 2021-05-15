@@ -17,7 +17,6 @@ export default {
     return {
       updatedAt: new Date(),
       updateId: null,
-      updateTlmId: null,
       moneyType: 'USDT',
       tlmPrice: 0,
       accounts: []
@@ -39,16 +38,12 @@ export default {
   },
   methods: {
     async updateTlmPrice() {
-      clearTimeout(this.updateTlmId)
-
       try {
         const data = await binance.avgPrice(this.moneyType)
         this.tlmPrice = parseFloat(data.price)
       } catch (e) {
         this.tlmPrice = 0
       }
-
-      this.updateTlmId = setTimeout(() => this.updateTlmPrice(), 60000)
     },
     sumAmounts(key) {
       return this.accounts.reduce((total, item) => {
@@ -60,6 +55,7 @@ export default {
       alert('Not ready yet')
     },
     refresh() {
+      this.updateTlmPrice()
       this.accounts.forEach(account => account.update(true))
 
       this.updatedAt = new Date()
@@ -78,10 +74,8 @@ export default {
       this.accounts.splice(index, 1)
     }
   },
-  async created() {
-    await this.updateTlmPrice()
-  },
   mounted() {
+    this.updateTlmPrice()
     this.scheduleRefresh()
   }
 }
