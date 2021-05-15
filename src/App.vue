@@ -1,12 +1,37 @@
 <template>
   <router-view />
+  <Dialog
+    v-model="showShare"
+    :cancel-button="false"
+    confirm-button="Copy URL"
+    size="small"
+    title="Share dashboard"
+    class="dark text-white"
+    @confirm="onCopyUrl">
+    <div class="flex flex-col items-center justify-center my-4 space-y-4">
+      <img
+        :src="qrCodeUrl"
+        width="250"
+        height="250"
+        class="max-w-full h-auto rounded-3xl" />
+      <strong class="block text-lg">
+        Scan QR code or copy URL
+      </strong>
+      <span class="block text-xs text-center">
+        {{ shareUrl.replace('https://', '') }}
+      </span>
+    </div>
+  </Dialog>
 </template>
 
 <script>
 import { binance } from '@/apis'
 import { Account } from '@/models'
 
-import { isDark, moneyType, accountNames } from '@/utils'
+import { isDark, moneyType, accountNames, hashids } from '@/utils'
+import { useClipboard } from '@vueuse/core'
+
+const { copy } = useClipboard({ read: false })
 
 export default {
   name: 'App',
@@ -21,6 +46,13 @@ export default {
         document.documentElement.classList.toggle('dark', value)
       },
       immediate: true
+    },
+    accountNames: {
+      handler() {
+        this.accounts = this.accountNames.map(name => new Account(name))
+        this.refresh()
+      },
+      immediate: true
     }
   },
   data() {
@@ -30,10 +62,18 @@ export default {
       tlmPrice: 0,
       totalTLM: null,
       totalWAX: null,
-      accounts: []
+      accounts: [],
+      showShare: false
     }
   },
   computed: {
+    shareUrl() {
+      const hash = hashids.encode(this.accountNames)
+      return `https://awmonitor.netlify.app/share/${hash}`
+    },
+    qrCodeUrl() {
+      return `https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=${this.shareUrl}&choe=UTF-8`
+    },
     isDark() {
       return isDark.value
     },
@@ -71,6 +111,9 @@ export default {
         }
       })
     },
+    async onCopyUrl() {
+      await copy(this.shareUrl)
+    },
     saveAccountNames() {
       accountNames.value = this.accounts.map(({ name }) => name)
     },
@@ -81,7 +124,7 @@ export default {
       }, 0)
     },
     share() {
-      alert('Not ready yet')
+      this.showShare = true
     },
     refresh() {
       this.updateTlmPrice()
@@ -106,10 +149,6 @@ export default {
       this.accounts.splice(index, 1)
       this.saveAccountNames()
     }
-  },
-  mounted() {
-    this.accounts = this.accountNames.map(name => new Account(name))
-    this.refresh()
   }
 }
 </script>
