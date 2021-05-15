@@ -16,15 +16,33 @@ export default {
     return {
       updatedAt: new Date(),
       updateId: null,
+      updateTlmId: null,
+      moneyType: 'USDT',
+      tlmPrice: 0,
       accounts: []
     }
   },
   computed: {
     loading() {
       return this.accounts.some(({ loading }) => !loading)
+    },
+    totalTLM() {
+      return this.sumAmounts('tlm')
+    },
+    totalWAX() {
+      return this.sumAmounts('wax')
+    },
+    totalMoney() {
+      return this.totalTLM * this.tlmPrice
     }
   },
   methods: {
+    sumAmounts(key) {
+      return this.accounts.reduce((total, item) => {
+        const amount = item[key] || 0
+        return total + amount
+      }, 0)
+    },
     share() {
       alert('Not ready yet')
     },

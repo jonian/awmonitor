@@ -3,20 +3,20 @@
     <div class="flex items-center justify-between container py-4">
       <div class="flex space-x-6">
         <Balance
-          :amount="totalTLM"
+          :amount="$app.totalTLM"
           :decimals="4"
           type="TLM" />
         <Balance
-          :amount="totalWAX"
+          :amount="$app.totalWAX"
           type="WAX" />
       </div>
       <div class="flex items-center space-x-4">
         <span class="text-gray-dark text-sm">
-          Binance TLM Price: {{ tlmPrice }} {{ moneyType }}
+          Binance TLM Price: {{ $app.tlmPrice }} {{ $app.moneyType }}
         </span>
         <Balance
-          :amount="totalMoney"
-          :type="moneyType">
+          :amount="$app.totalMoney"
+          :type="$app.moneyType">
           <Icon
             name="setting"
             class="text-gray-light" />
@@ -29,31 +29,6 @@
 <script>
 export default {
   name: 'InfoBar',
-  inject: ['$app'],
-  data() {
-    return {
-      moneyType: 'USDT',
-      tlmPrice: 0.38191635
-    }
-  },
-  computed: {
-    totalTLM() {
-      return this.sumAmounts('tlm')
-    },
-    totalWAX() {
-      return this.sumAmounts('wax')
-    },
-    totalMoney() {
-      return this.totalTLM * this.tlmPrice
-    }
-  },
-  methods: {
-    sumAmounts(key) {
-      return this.$app.accounts.reduce((total, item) => {
-        const amount = item[key] || 0
-        return total + amount
-      }, 0)
-    }
-  }
+  inject: ['$app']
 }
 </script>
