@@ -3,7 +3,7 @@
     <div class="flex p-6 border-b dark:border-gray-darkest">
       <div class="flex flex-col flex-grow space-y-4">
         <div class="flex items-baseline space-x-2">
-          <strong>Miner: {{ account.tag }}</strong>
+          <strong>Miner: {{ account.tag || 'unknown' }}</strong>
           <strong class="text-gray-dark text-sm">{{ account.name }}</strong>
           <Icon
             name="trash"

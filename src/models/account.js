@@ -55,7 +55,7 @@ export default class Account {
       account: {},
       history: [],
       lastMine: null,
-      player: { tag: 'player' },
+      player: {},
       tlm: {},
       wax: {}
     })
