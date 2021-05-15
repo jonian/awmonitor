@@ -1,4 +1,4 @@
-import { watch, computed } from 'vue'
+import { computed } from 'vue'
 import { usePreferredDark } from '@vueuse/core'
 import { colorSchema } from '../store'
 
@@ -18,9 +18,3 @@ export const isDark = computed({
     }
   }
 })
-
-watch(
-  isDark,
-  value => document.documentElement.classList.toggle('dark', value),
-  { immediate: true }
-)

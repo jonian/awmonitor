@@ -5,12 +5,21 @@
 <script>
 import { binance } from '@/apis'
 import { Account } from '@/models'
+import { isDark } from '@/utils'
 
 export default {
   name: 'App',
   provide() {
     return {
       $app: this
+    }
+  },
+  watch: {
+    isDark: {
+      handler(value) {
+        document.documentElement.classList.toggle('dark', value)
+      },
+      immediate: true
     }
   },
   data() {
@@ -25,6 +34,9 @@ export default {
     }
   },
   computed: {
+    isDark() {
+      return isDark.value
+    },
     loading() {
       return this.accounts.some(({ loading }) => loading)
     },
