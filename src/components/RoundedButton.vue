@@ -1,6 +1,7 @@
 <template>
   <button
     :style="{ borderColor: 'currentColor' }"
+    :class="{ 'opacity-50': disabled, 'pointer-events-none': disabled }"
     class="rounded-full border px-6 py-2">
     <span class="flex flex-nowrap items-baseline space-x-2">
       <Icon
@@ -17,6 +18,10 @@
 export default {
   name: 'RoundedButton',
   props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
     text: {
       type: String,
       default: 'Button'

@@ -16,6 +16,7 @@
           Share
         </RoundedButton>
         <RoundedButton
+          :disabled="$app.loading"
           class="text-success"
           icon="redo"
           @click="onRefreshClick">

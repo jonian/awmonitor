@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     loading() {
-      return this.accounts.some(({ loading }) => !loading)
+      return this.accounts.some(({ loading }) => loading)
     },
     totalTLM() {
       return this.sumAmounts('tlm')
