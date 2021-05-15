@@ -49,8 +49,10 @@ export default {
     },
     accountNames: {
       handler() {
-        this.accounts = this.accountNames.map(name => new Account(name))
-        this.refresh()
+        if (!this._saveAccounts) {
+          this.accounts = this.accountNames.map(name => new Account(name))
+          this.refresh()
+        }
       },
       immediate: true
     }
@@ -115,7 +117,10 @@ export default {
       await copy(this.shareUrl)
     },
     saveAccountNames() {
+      this._saveAccounts = true
       accountNames.value = this.accounts.map(({ name }) => name)
+
+      this.$nextTick(() => this._saveAccounts = false)
     },
     sumAmounts(key) {
       return this.accounts.reduce((total, item) => {
