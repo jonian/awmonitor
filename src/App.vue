@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { binance } from '@/apis'
 import { Account } from '@/models'
 
 export default {
@@ -37,6 +38,18 @@ export default {
     }
   },
   methods: {
+    async updateTlmPrice() {
+      clearTimeout(this.updateTlmId)
+
+      try {
+        const data = await binance.avgPrice(this.moneyType)
+        this.tlmPrice = parseFloat(data.price)
+      } catch (e) {
+        this.tlmPrice = 0
+      }
+
+      this.updateTlmId = setTimeout(() => this.updateTlmPrice(), 60000)
+    },
     sumAmounts(key) {
       return this.accounts.reduce((total, item) => {
         const amount = item[key] || 0
@@ -64,6 +77,9 @@ export default {
       const index = this.accounts.findIndex(account => account.name == name)
       this.accounts.splice(index, 1)
     }
+  },
+  async created() {
+    await this.updateTlmPrice()
   },
   mounted() {
     this.scheduleRefresh()
