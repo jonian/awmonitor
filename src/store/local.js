@@ -9,3 +9,8 @@ export const moneyType = useStorage(
   'money-type',
   'USDT'
 )
+
+export const accountNames = useStorage(
+  'account-names',
+  []
+)

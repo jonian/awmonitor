@@ -6,7 +6,7 @@
 import { binance } from '@/apis'
 import { Account } from '@/models'
 
-import { isDark, moneyType } from '@/utils'
+import { isDark, moneyType, accountNames } from '@/utils'
 
 export default {
   name: 'App',
@@ -40,6 +40,9 @@ export default {
     moneyType() {
       return moneyType.value
     },
+    accountNames() {
+      return accountNames.value
+    },
     loading() {
       return this.accounts.some(({ loading }) => loading)
     },
@@ -68,6 +71,9 @@ export default {
         }
       })
     },
+    saveAccountNames() {
+      accountNames.value = this.accounts.map(({ name }) => name)
+    },
     sumAmounts(key) {
       return this.accounts.reduce((total, item) => {
         const amount = item[key] || 0
@@ -91,13 +97,16 @@ export default {
     addAccount(name) {
       const account = new Account(name)
       this.accounts.push(account)
+      this.saveAccountNames()
     },
     removeAccount(name) {
       const index = this.accounts.findIndex(account => account.name == name)
       this.accounts.splice(index, 1)
+      this.saveAccountNames()
     }
   },
   mounted() {
+    this.accounts = this.accountNames.map(name => new Account(name))
     this.refresh()
   }
 }
