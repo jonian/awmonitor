@@ -29,7 +29,7 @@ export default {
       return this.accounts.some(({ loading }) => loading)
     },
     totalMoney() {
-      return this.totalTLM ? this.totalTLM * this.tlmPrice : null
+      return this.totalTLM == null ? null : this.totalTLM * this.tlmPrice
     }
   },
   methods: {
