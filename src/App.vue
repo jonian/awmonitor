@@ -5,7 +5,8 @@
 <script>
 import { binance } from '@/apis'
 import { Account } from '@/models'
-import { isDark } from '@/utils'
+
+import { isDark, moneyType } from '@/utils'
 
 export default {
   name: 'App',
@@ -26,7 +27,6 @@ export default {
     return {
       updatedAt: new Date(),
       updateId: null,
-      moneyType: 'USDT',
       tlmPrice: 0,
       totalTLM: null,
       totalWAX: null,
@@ -36,6 +36,9 @@ export default {
   computed: {
     isDark() {
       return isDark.value
+    },
+    moneyType() {
+      return moneyType.value
     },
     loading() {
       return this.accounts.some(({ loading }) => loading)
