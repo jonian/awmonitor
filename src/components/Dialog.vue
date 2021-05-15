@@ -5,7 +5,9 @@
     @close="onCancel">
     <div class="flex items-stretch justify-center h-screen sm:items-center">
       <DialogOverlay class="fixed inset-0 bg-black opacity-75" />
-      <div class="flex flex-col max-w-2xl w-full m-0 sm:m-6 bg-white border-white z-10 sm:border sm:shadow-md sm:rounded dark:bg-black dark:border-gray-darkest">
+      <div
+        :class="{ 'max-w-md': small, 'max-w-2xl': medium, 'max-w-6xl': large }"
+        class="flex flex-col w-full m-0 sm:m-6 bg-white border-white z-10 sm:border sm:shadow-md sm:rounded dark:bg-black dark:border-gray-darkest">
         <DialogTitle class="flex items-center justify-between p-4 border-b dark:border-gray-darkest">
           <span class="text-lg font-bold">
             {{ title }}
@@ -18,15 +20,19 @@
         <DialogDescription class="flex-grow p-4 overflow-y-auto">
           <slot />
         </DialogDescription>
-        <div class="flex items-center justify-between p-4 border-t dark:border-gray-darkest">
+        <div
+          v-if="buttons"
+          class="flex items-center justify-between p-4 border-t dark:border-gray-darkest">
           <SimpleButton
             v-if="cancelButton"
+            :class="buttonClass"
             class="text-danger border border-danger"
             @click="onCancel">
             {{ cancelButton }}
           </SimpleButton>
           <SimpleButton
             v-if="confirmButton"
+            :class="buttonClass"
             class="text-white bg-primary"
             @click="onConfirm">
             {{ confirmButton }}
@@ -56,6 +62,10 @@ export default {
       type: String,
       required: true
     },
+    size: {
+      type: String,
+      default: 'medium'
+    },
     cancelButton: {
       type: [Boolean, String],
       default: 'Cancel'
@@ -73,6 +83,24 @@ export default {
         })
       },
       immediate: true
+    }
+  },
+  computed: {
+    buttons() {
+      const items = [this.confirmButton, this.cancelButton]
+      return items.filter(item => !!item).length
+    },
+    buttonClass() {
+      return this.buttons == 1 && this.small ? 'w-full' : null
+    },
+    small() {
+      return this.size == 'small'
+    },
+    medium() {
+      return this.size == 'medium'
+    },
+    large() {
+      return this.size == 'large'
     }
   },
   methods: {
