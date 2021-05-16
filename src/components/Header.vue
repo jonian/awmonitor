@@ -9,11 +9,7 @@
         <h1 class="font-bold text-2xl">{{ title }}</h1>
       </div>
       <div class="flex space-x-6">
-        <RoundedButton
-          text="Share"
-          class="text-primary"
-          icon="share-alt"
-          @click="onShareClick" />
+        <ShareButton />
         <RoundedButton
           :disabled="$app.loading"
           text="Refresh"
@@ -35,9 +31,6 @@ export default {
     }
   },
   methods: {
-    onShareClick() {
-      this.$app.share()
-    },
     onRefreshClick() {
       this.$app.refresh()
     }
