@@ -10,18 +10,16 @@
       </div>
       <div class="flex space-x-6">
         <RoundedButton
+          text="Share"
           class="text-primary"
           icon="share-alt"
-          @click="onShareClick">
-          Share
-        </RoundedButton>
+          @click="onShareClick" />
         <RoundedButton
           :disabled="$app.loading"
+          text="Refresh"
           class="text-success"
           icon="redo"
-          @click="onRefreshClick">
-          Refresh
-        </RoundedButton>
+          @click="onRefreshClick" />
       </div>
     </div>
   </header>

@@ -25,18 +25,16 @@
           class="flex items-center justify-between p-4 border-t dark:border-gray-darkest">
           <SimpleButton
             v-if="cancelButton"
+            :text="cancelButton"
             :class="buttonClass"
             class="text-danger border border-danger"
-            @click="onCancel">
-            {{ cancelButton }}
-          </SimpleButton>
+            @click="onCancel" />
           <SimpleButton
             v-if="confirmButton"
+            :text="confirmButton"
             :class="buttonClass"
             class="text-white bg-primary"
-            @click="onConfirm">
-            {{ confirmButton }}
-          </SimpleButton>
+            @click="onConfirm" />
         </div>
       </div>
     </div>
