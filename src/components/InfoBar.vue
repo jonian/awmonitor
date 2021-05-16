@@ -11,7 +11,7 @@
           type="WAX" />
       </div>
       <div class="flex flex-col-reverse items-justify justify-between sm:items-center sm:flex-row-reverse lg:flex-row lg:space-x-4">
-        <span class="flex justify-between text-gray-dark text-sm space-x-2 mt-2 sm:mt-0">
+        <span class="flex justify-between text-gray-dark text-sm space-x-2 mt-2 mr-1 sm:mt-0 lg:mr-0">
           <span>Binance TLM Price:</span>
           <span>{{ $app.tlmPrice }} {{ $app.moneyType }}</span>
         </span>
