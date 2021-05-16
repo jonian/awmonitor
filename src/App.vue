@@ -29,13 +29,14 @@ import { binance } from '@/apis'
 import { Account } from '@/models'
 
 import { isDark, moneyType, accountNames, hashids } from '@/utils'
-import { copyToClipboard } from '@/utils'
+import { copyToClipboard, screen } from '@/utils'
 
 export default {
   name: 'App',
   provide() {
     return {
-      $app: this
+      $app: this,
+      $screen: screen.value
     }
   },
   watch: {
