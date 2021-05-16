@@ -1,9 +1,9 @@
 <template>
   <div class="bg-white border rounded-md shadow-sm dark:bg-black dark:border-gray-darkest">
-    <div class="flex p-6 border-b dark:border-gray-darkest">
+    <div class="flex flex-col p-4 border-b dark:border-gray-darkest md:p-6 sm:flex-row">
       <div class="flex flex-col flex-grow space-y-4">
         <div class="flex items-baseline space-x-2">
-          <strong>Miner: {{ account.tag || 'unknown' }}</strong>
+          <strong class="flex-grow sm:flex-grow-0">Miner: {{ account.tag || 'unknown' }}</strong>
           <strong class="text-gray-dark text-sm">{{ account.name }}</strong>
           <Icon
             name="trash"
@@ -14,24 +14,24 @@
           <div class="flex flex-col lg:space-x-6 lg:flex-row">
             <Balance
               :amount="account.tlm"
-              :expanded="false"
+              :expanded="!$screen.sm"
               :decimals="4"
               type="TLM" />
             <Balance
               :amount="account.wax"
-              :expanded="false"
+              :expanded="!$screen.sm"
               type="WAX" />
           </div>
-          <div class="flex items-baseline space-x-2">
+          <div class="flex items-baseline space-x-2 mr-1">
             <Icon
               name="processor"
               class="text-gray-dark" />
-            <span class="text-sm">CPU Staked</span>
+            <span class="text-sm flex-grow sm:flex-grow-0">CPU Staked</span>
             <strong class="text-sm">{{ account.cpu.staked.toFixed(2) }} WAX</strong>
           </div>
         </div>
       </div>
-      <div class="flex flex-nowrap items-center space-x-4">
+      <div class="flex flex-nowrap items-center justify-between space-x-4 mt-6 sm:mt-0">
         <ResourceStats
           :stats="account.cpu"
           title="CPU"
@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="flex flex-col lg:flex-row">
-      <div class="flex flex-grow items-baseline space-x-4 px-6 py-4 border-b lg:border-0 dark:border-gray-darkest">
+      <div class="flex flex-grow flex-col items-baseline space-y-4 p-4 border-b sm:flex-row sm:space-x-4 sm:space-y-0 md:px-6 lg:border-0 dark:border-gray-darkest">
         <div class="flex items-baseline flex-nowrap space-x-2">
           <Icon name="calendar-alt" class="text-gray-dark" />
           <span class="text-sm">Last Mined</span>
@@ -58,7 +58,7 @@
         </div>
         <div class="flex items-center space-x-1 text-xs">
           <a
-            v-for="mine in account.history"
+            v-for="mine in history"
             :key="mine.last_mine_tx"
             :href="transactionLink(mine.last_mine_tx)"
             target="_blank">
@@ -66,7 +66,7 @@
           </a>
         </div>
       </div>
-      <div class="flex px-6 py-2 items-baseline justify-between space-x-4 font-semibold text-primary lg:py-4">
+      <div class="flex px-4 py-2 items-baseline justify-between space-x-4 font-semibold text-primary md:px-6 lg:py-4">
         <div
           v-for="link in links"
           :key="link.href"
@@ -82,7 +82,7 @@
 <script>
 export default {
   name: 'AccountCard',
-  inject: ['$app'],
+  inject: ['$app', '$screen'],
   props: {
     account: {
       type: Object,
@@ -105,6 +105,13 @@ export default {
 
         return `${date.toDateString()} ${time}`
       }
+    },
+    history() {
+      return this.$screen.md
+        ? this.account.history
+        : this.$screen.sm
+          ? this.account.history.slice(-4)
+          : this.account.history.slice(-3)
     }
   },
   methods: {

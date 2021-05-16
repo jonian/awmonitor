@@ -1,24 +1,20 @@
 <template>
-  <div
-    :class="{ 'justify-between': expanded }"
-    class="flex flex-nowrap items-center space-x-2">
-    <span class="flex items-center space-x-2">
-      <slot>
-        <img
-          :src="imagePath"
-          :alt="type"
-          :style="{ width: '1rem', height: '1rem' }">
-      </slot>
-      <span class="text-sm whitespace-nowrap">
-        {{ type }} Total
-      </span>
+  <div class="flex flex-nowrap items-center space-x-2">
+    <slot>
+      <img
+        :src="imagePath"
+        :alt="type"
+        :style="{ width: '1rem', height: '1rem' }">
+    </slot>
+    <span
+      :class="{ 'flex-grow': expanded }"
+      class="text-sm whitespace-nowrap">
+      {{ type }} Total
     </span>
-    <span class="flex items-center space-x-2">
-      <strong class="text-sm">{{ value.toFixed(decimals) }}</strong>
-      <Icon
-        v-bind="iconAttrs"
-        class="transform scale-150" />
-    </span>
+    <strong class="text-sm">{{ value.toFixed(decimals) }}</strong>
+    <Icon
+      v-bind="iconAttrs"
+      class="transform scale-150" />
   </div>
 </template>
 
