@@ -32,7 +32,7 @@
         :src="qrCodeUrl"
         width="250"
         height="250"
-        class="max-w-full h-auto rounded-3xl" />
+        class="max-w-full h-auto rounded-3xl bg-white" />
       <strong class="block text-lg">
         WAX Account Name: {{ account }}
       </strong>
