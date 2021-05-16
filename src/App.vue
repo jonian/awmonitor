@@ -29,9 +29,7 @@ import { binance } from '@/apis'
 import { Account } from '@/models'
 
 import { isDark, moneyType, accountNames, hashids } from '@/utils'
-import { useClipboard } from '@vueuse/core'
-
-const { copy } = useClipboard({ read: false })
+import { copyToClipboard } from '@/utils'
 
 export default {
   name: 'App',
@@ -114,7 +112,7 @@ export default {
       })
     },
     async onCopyUrl() {
-      await copy(this.shareUrl)
+      await copyToClipboard(this.shareUrl)
     },
     saveAccountNames() {
       this._saveAccounts = true
