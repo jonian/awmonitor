@@ -34,6 +34,7 @@ export default {
     Components(),
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: 'inline',
       manifest: {
         name: 'AW Monitor',
         short_name: 'AW Monitor',
