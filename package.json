@@ -11,6 +11,7 @@
     "@iconscout/unicons": "^3.0.3",
     "@vueuse/core": "^4.0.1",
     "@vueuse/head": "^0.5.1",
+    "dayjs": "^1.10.4",
     "js-base64": "^3.6.0",
     "ky": "^0.28.0",
     "svg-gauge": "^1.0.6",

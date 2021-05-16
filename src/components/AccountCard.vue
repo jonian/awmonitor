@@ -80,6 +80,8 @@
 </template>
 
 <script>
+import { dayjs } from '@/utils'
+
 export default {
   name: 'AccountCard',
   inject: ['$app', '$screen'],
@@ -97,13 +99,10 @@ export default {
       ]
     },
     lastMinedAt() {
-      if (!this.account.lastMine) {
-        return 'Loading...'
+      if (this.account.lastMine) {
+        return dayjs.utc(this.account.lastMine.last_mine).fromNow()
       } else {
-        const date = new Date(this.account.lastMine.last_mine)
-        const time = date.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' })
-
-        return `${date.toDateString()} ${time}`
+        return 'Loading...'
       }
     },
     history() {

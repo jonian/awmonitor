@@ -21,15 +21,14 @@
 </template>
 
 <script>
+import { dayjs } from '@/utils'
+
 export default {
   name: 'HomePage',
   inject: ['$app'],
   computed: {
     updatedAt() {
-      const date = this.$app.updatedAt
-      const time = date.toLocaleTimeString([], { hour12: false })
-
-      return `${date.toDateString()} ${time}`
+      return dayjs(this.$app.updatedAt).format('MMMM D YYYY, HH:mm:ss')
     }
   }
 }
