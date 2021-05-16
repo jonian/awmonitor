@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-center justify-between mb-6">
-    <div class="flex items-center space-x-4">
+  <div class="flex flex-col items-stretch justify-between mb-6 sm:flex-row sm:items-center">
+    <div class="flex items-center space-x-4 justify-between">
       <h2 class="font-bold text-xl">Accounts</h2>
       <AddAccountButton />
     </div>
