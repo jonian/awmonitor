@@ -14,7 +14,8 @@
     @cancel="account = null">
     <FormInput
       v-model="account"
-      placeholder="myaccount.wam" />
+      placeholder="myaccount.wam"
+      @keyup.enter.native="onEnterKey" />
   </Dialog>
 </template>
 
@@ -37,6 +38,10 @@ export default {
         this.$app.addAccount(this.account)
         this.account = null
       }
+    },
+    onEnterKey() {
+      this.onConfirm()
+      this.visible = false
     }
   }
 }
