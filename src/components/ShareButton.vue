@@ -1,6 +1,7 @@
 <template>
-  <RoundedButton
-    text="Share"
+  <component
+    :is="tag"
+    :text="text"
     class="text-primary"
     icon="share-alt"
     @click="visible = true" />
@@ -31,15 +32,35 @@
 <script>
 import { hashids, copyToClipboard } from '@/utils'
 
+import LinkButton from '@/components/LinkButton.vue'
+import RoundedButton from '@/components/RoundedButton.vue'
+
 export default {
   name: 'ShareButton',
   inject: ['$app'],
+  components: {
+    LinkButton,
+    RoundedButton
+  },
+  props: {
+    tag: {
+      type: String,
+      default: 'RoundedButton'
+    },
+    showText: {
+      type: Boolean,
+      default: true
+    }
+  },
   data() {
     return {
       visible: false
     }
   },
   computed: {
+    text() {
+      return this.showText ? 'Share' : null
+    },
     shareUrl() {
       const hash = hashids.encode(this.$app.accountNames)
       return `https://awmonitor.netlify.app/share/${hash}`
