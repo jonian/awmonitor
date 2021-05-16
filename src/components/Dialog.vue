@@ -3,10 +3,12 @@
     :open="modelValue"
     class="fixed inset-0 z-50 text-black dark:text-white"
     @close="onCancel">
-    <div class="flex items-stretch justify-center h-screen sm:items-center">
+    <div
+      :class="{ 'items-stretch': !panelMode, 'items-end': panelMode }"
+      class="flex justify-center h-screen sm:items-center">
       <DialogOverlay class="fixed inset-0 bg-black opacity-75" />
       <div
-        :class="{ 'max-w-md': small, 'max-w-2xl': medium, 'max-w-6xl': large }"
+        :class="{ 'sm:max-w-md': small, 'sm:max-w-2xl': medium, 'sm:max-w-6xl': large }"
         class="flex flex-col w-full m-0 sm:m-6 bg-white border-white z-10 sm:border sm:shadow-md sm:rounded dark:bg-black dark:border-gray-darkest">
         <DialogTitle class="flex items-center justify-between p-4 border-b dark:border-gray-darkest">
           <span class="text-lg font-bold">
@@ -59,6 +61,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    panelMode: {
+      type: Boolean,
+      default: false
     },
     size: {
       type: String,

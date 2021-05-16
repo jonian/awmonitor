@@ -8,7 +8,7 @@
     title="Share dashboard"
     class="dark text-white"
     @confirm="onCopyUrl">
-    <div class="flex flex-col items-center justify-center my-4 space-y-4">
+    <div class="flex flex-col items-center justify-center min-h-full my-4 space-y-4">
       <img
         :src="qrCodeUrl"
         width="250"

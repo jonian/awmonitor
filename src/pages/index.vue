@@ -20,6 +20,7 @@
   </div>
   <Dialog
     v-model="showAccountDialog"
+    :panel-mode="true"
     title="Add Account"
     @confirm="onAddConfirm"
     @cancel="newAccount = null">
