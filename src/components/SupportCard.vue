@@ -1,8 +1,8 @@
 <template>
   <div
     v-if="showTip"
-    class="flex items-center justify-between p-8 bg-primary text-white rounded-md shadow-sm">
-    <h2 class="text-2xl font-bold">Do you like this project?</h2>
+    class="flex flex-col items-center justify-between p-8 bg-primary text-white rounded-md shadow-sm sm:flex-row">
+    <h2 class="text-2xl font-bold mb-6 sm:mb-0">Do you like this project?</h2>
     <RoundedButton
       text="Send a tip"
       icon="smile"
