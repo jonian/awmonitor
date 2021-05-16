@@ -38,6 +38,7 @@ export default {
         name: 'AW Monitor',
         short_name: 'AW Monitor',
         theme_color: '#6563FF',
+        display: 'standalone',
         icons: [
           {
             src: '/icon-192x192.png',
