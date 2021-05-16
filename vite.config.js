@@ -37,6 +37,7 @@ export default {
       manifest: {
         name: 'AW Monitor',
         short_name: 'AW Monitor',
+        background_color: '#6563FF',
         theme_color: '#6563FF',
         display: 'standalone',
         icons: [
