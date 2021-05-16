@@ -1,9 +1,11 @@
 <template>
-  <Icon
-    v-bind="$attrs"
-    name="plus-circle"
-    class="text-primary transform scale-150 cursor-pointer"
-    @click="visible = true" />
+  <slot :open="openModal">
+    <Icon
+      v-bind="$attrs"
+      name="plus-circle"
+      class="text-primary transform scale-150 cursor-pointer"
+      @click="openModal" />
+  </slot>
   <Dialog
     v-model="visible"
     :panel-mode="true"
@@ -27,6 +29,9 @@ export default {
     }
   },
   methods: {
+    openModal() {
+      this.visible = true
+    },
     onConfirm() {
       if (this.account) {
         this.$app.addAccount(this.account)
