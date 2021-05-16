@@ -5,7 +5,7 @@
     @close="onCancel">
     <div
       :class="{ 'items-stretch': !panelMode, 'items-end': panelMode }"
-      class="flex justify-center h-screen sm:items-center">
+      class="flex justify-center h-full sm:items-center">
       <DialogOverlay class="fixed inset-0 bg-black opacity-75" />
       <div
         :class="{ 'sm:max-w-md': small, 'sm:max-w-2xl': medium, 'sm:max-w-6xl': large, 'border-t': panelMode }"
