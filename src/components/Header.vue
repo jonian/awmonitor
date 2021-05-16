@@ -10,12 +10,7 @@
       </div>
       <div class="flex space-x-6">
         <ShareButton />
-        <RoundedButton
-          :disabled="$app.loading"
-          text="Refresh"
-          class="text-success"
-          icon="redo"
-          @click="onRefreshClick" />
+        <ReloadButton />
       </div>
     </div>
   </header>
@@ -24,15 +19,9 @@
 <script>
 export default {
   name: 'Header',
-  inject: ['$app'],
   data() {
     return {
       title: 'AW Monitor'
-    }
-  },
-  methods: {
-    onRefreshClick() {
-      this.$app.refresh()
     }
   }
 }
