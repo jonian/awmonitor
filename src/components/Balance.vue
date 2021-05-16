@@ -1,16 +1,24 @@
 <template>
-  <div class="flex flex-nowrap items-center space-x-2">
-    <slot>
-      <img
-        :src="imagePath"
-        :alt="type"
-        :style="{ width: '1rem', height: '1rem' }">
-    </slot>
-    <span class="text-sm">{{ type }} Total</span>
-    <strong class="text-sm">{{ value.toFixed(decimals) }}</strong>
-    <Icon
-      v-bind="iconAttrs"
-      class="transform scale-150" />
+  <div
+    :class="{ 'justify-between': expanded }"
+    class="flex flex-nowrap items-center space-x-2">
+    <span class="flex items-center space-x-2">
+      <slot>
+        <img
+          :src="imagePath"
+          :alt="type"
+          :style="{ width: '1rem', height: '1rem' }">
+      </slot>
+      <span class="text-sm whitespace-nowrap">
+        {{ type }} Total
+      </span>
+    </span>
+    <span class="flex items-center space-x-2">
+      <strong class="text-sm">{{ value.toFixed(decimals) }}</strong>
+      <Icon
+        v-bind="iconAttrs"
+        class="transform scale-150" />
+    </span>
   </div>
 </template>
 
@@ -29,6 +37,10 @@ export default {
     decimals: {
       type: Number,
       default: 2
+    },
+    expanded: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {

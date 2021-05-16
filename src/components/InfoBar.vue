@@ -1,7 +1,7 @@
 <template>
   <div class="border-b dark:bg-black dark:border-gray-darkest">
-    <div class="flex items-center justify-between container py-4">
-      <div class="flex space-x-6">
+    <div class="flex flex-col items-stretch justify-between container py-4 lg:flex-row">
+      <div class="flex flex-col justify-between sm:flex-row lg:space-x-6">
         <Balance
           :amount="$app.totalTLM"
           :decimals="4"
@@ -10,9 +10,10 @@
           :amount="$app.totalWAX"
           type="WAX" />
       </div>
-      <div class="flex items-center space-x-4">
-        <span class="text-gray-dark text-sm">
-          Binance TLM Price: {{ $app.tlmPrice }} {{ $app.moneyType }}
+      <div class="flex flex-col-reverse items-justify justify-between sm:items-center sm:flex-row-reverse lg:flex-row lg:space-x-4">
+        <span class="flex justify-between text-gray-dark text-sm space-x-2 mt-2 sm:mt-0">
+          <span>Binance TLM Price:</span>
+          <span>{{ $app.tlmPrice }} {{ $app.moneyType }}</span>
         </span>
         <Balance
           :amount="$app.totalMoney"
