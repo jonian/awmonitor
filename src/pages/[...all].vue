@@ -1,9 +1,8 @@
-<template>
-  <span>Error 404</span>
-</template>
-
 <script>
 export default {
-  name: 'NotFound'
+  name: 'NotFound',
+  beforeRouteEnter(to, from, next) {
+    next('/')
+  }
 }
 </script>
