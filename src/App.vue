@@ -106,11 +106,13 @@ export default {
       this.updateId = setTimeout(() => this.refresh(), 60000)
     },
     addAccount(name) {
-      const account = new Account(name)
-      account.update()
+      if (!this.accountNames.includes(name)) {
+        const account = new Account(name)
+        account.update()
 
-      this.accounts.push(account)
-      this.saveAccountNames()
+        this.accounts.push(account)
+        this.saveAccountNames()
+      }
     },
     removeAccount(name) {
       const index = this.accounts.findIndex(account => account.name == name)
