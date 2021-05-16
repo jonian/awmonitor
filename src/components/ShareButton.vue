@@ -22,7 +22,7 @@
       <strong class="block text-lg">
         Scan QR code or copy URL
       </strong>
-      <span class="block text-xs text-center">
+      <span class="block text-xs text-center break-all px-4">
         {{ shareUrl.replace('https://', '') }}
       </span>
     </div>
