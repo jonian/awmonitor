@@ -1,5 +1,5 @@
 <template>
-  <span class="px-2 py-1 text-gray-dark bg-gray-lightest border rounded-md dark:bg-gray-darkest dark:border-gray-dark">
+  <span class="px-2 py-1 text-gray-dark bg-gray-lightest border rounded-md whitespace-nowrap dark:bg-gray-darkest dark:border-gray-dark">
     {{ text }}
   </span>
 </template>
