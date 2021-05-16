@@ -2,7 +2,7 @@
   <div class="flex flex-col items-stretch justify-between mb-6 sm:flex-row sm:items-center">
     <div class="flex items-center space-x-4 justify-between">
       <h2 class="font-bold text-xl">Accounts</h2>
-      <AddAccountButton />
+      <AddAccountButton class="relative top-2 sm:top-0" />
     </div>
     <span class="text-sm text-gray-light">
       Last update: {{ updatedAt }}

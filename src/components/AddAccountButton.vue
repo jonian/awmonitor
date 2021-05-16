@@ -1,5 +1,6 @@
 <template>
   <Icon
+    v-bind="$attrs"
     name="plus-circle"
     class="text-primary transform scale-150 cursor-pointer"
     @click="visible = true" />
