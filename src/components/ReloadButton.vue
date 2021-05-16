@@ -1,5 +1,6 @@
 <template>
   <component
+    v-if="$app.hasAccounts"
     :is="tag"
     :text="text"
     :disabled="$app.loading"

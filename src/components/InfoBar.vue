@@ -1,5 +1,7 @@
 <template>
-  <div class="border-b dark:bg-black dark:border-gray-darkest">
+  <div
+    v-if="$app.hasAccounts"
+    class="border-b dark:bg-black dark:border-gray-darkest">
     <div class="flex flex-col items-stretch justify-between container py-4 lg:flex-row">
       <div class="flex flex-col justify-between sm:flex-row lg:space-x-6">
         <Balance

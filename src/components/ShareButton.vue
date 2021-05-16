@@ -62,8 +62,14 @@ export default {
       return this.showText ? 'Share' : null
     },
     shareUrl() {
-      const hash = hashids.encode(this.$app.accountNames)
-      return `https://awmonitor.netlify.app/share/${hash}`
+      const link = 'https://awmonitor.netlify.app'
+
+      if (this.$app.hasAccounts) {
+        const hash = hashids.encode(this.$app.accountNames)
+        return `${link}/share/${hash}`
+      } else {
+        return link
+      }
     },
     qrCodeUrl() {
       return `https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=${this.shareUrl}&choe=UTF-8`

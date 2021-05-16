@@ -54,6 +54,9 @@ export default {
     accountNames() {
       return accountNames.value
     },
+    hasAccounts() {
+      return this.accountNames.length > 0
+    },
     loading() {
       return this.accounts.some(({ loading }) => loading)
     },
