@@ -107,11 +107,11 @@ export default {
       }
     },
     history() {
+      const items = [...this.account.history]
+
       return this.$screen.md
-        ? this.account.history
-        : this.$screen.sm
-          ? this.account.history.slice(-4)
-          : this.account.history.slice(-3)
+        ? items
+        : this.$screen.xs ? items.splice(-4) : items.splice(-3)
     }
   },
   methods: {
