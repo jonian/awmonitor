@@ -37,7 +37,7 @@ export default {
       manifest: {
         name: 'AW Monitor',
         short_name: 'AW Monitor',
-        theme_color: '#ffffff',
+        theme_color: '#6563FF',
         icons: [
           {
             src: '/icon-192x192.png',
@@ -53,7 +53,13 @@ export default {
             src: '/icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable',
+            purpose: 'any',
+          },
+          {
+            src: '/mask-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
           }
         ]
       }
