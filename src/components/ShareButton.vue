@@ -13,7 +13,7 @@
     title="Share dashboard"
     class="dark text-white"
     @confirm="onCopy">
-    <div class="flex flex-col items-center justify-center min-h-full my-4 space-y-4">
+    <div class="flex flex-col items-center justify-center min-h-full py-4 space-y-4">
       <img
         :src="qrCodeUrl"
         width="250"
