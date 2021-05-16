@@ -1,0 +1,37 @@
+<template>
+  <Icon
+    name="plus-circle"
+    class="text-primary transform scale-150 cursor-pointer"
+    @click="visible = true" />
+  <Dialog
+    v-model="visible"
+    :panel-mode="true"
+    title="Add Account"
+    @confirm="onConfirm"
+    @cancel="account = null">
+    <FormInput
+      v-model="account"
+      placeholder="myaccount.wam" />
+  </Dialog>
+</template>
+
+<script>
+export default {
+  name: 'AddAccountButton',
+  inject: ['$app'],
+  data() {
+    return {
+      visible: false,
+      account: null
+    }
+  },
+  methods: {
+    onConfirm() {
+      if (this.account) {
+        this.$app.addAccount(this.account)
+        this.account = null
+      }
+    }
+  }
+}
+</script>
