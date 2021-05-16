@@ -11,13 +11,15 @@
             @click="onDelete" />
         </div>
         <div class="flex flex-col space-y-2 text-gray-darkest dark:text-gray-lightest">
-          <div class="flex space-x-6">
+          <div class="flex flex-col lg:space-x-6 lg:flex-row">
             <Balance
               :amount="account.tlm"
+              :expanded="false"
               :decimals="4"
               type="TLM" />
             <Balance
               :amount="account.wax"
+              :expanded="false"
               type="WAX" />
           </div>
           <div class="flex items-baseline space-x-2">
@@ -47,8 +49,8 @@
           class="text-orange" />
       </div>
     </div>
-    <div class="flex px-6 py-4">
-      <div class="flex flex-grow items-baseline space-x-4">
+    <div class="flex flex-col lg:flex-row">
+      <div class="flex flex-grow items-baseline space-x-4 px-6 py-4 border-b lg:border-0 dark:border-gray-darkest">
         <div class="flex items-baseline flex-nowrap space-x-2">
           <Icon name="calendar-alt" class="text-gray-dark" />
           <span class="text-sm">Last Mined</span>
@@ -64,7 +66,7 @@
           </a>
         </div>
       </div>
-      <div class="flex items-baseline justify-between space-x-4 font-semibold text-primary">
+      <div class="flex px-6 py-2 items-baseline justify-between space-x-4 font-semibold text-primary lg:py-4">
         <div
           v-for="link in links"
           :key="link.href"
