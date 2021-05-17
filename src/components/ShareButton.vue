@@ -14,11 +14,7 @@
     class="dark text-white"
     @confirm="onCopy">
     <div class="flex flex-col items-center justify-center min-h-full py-4 space-y-4">
-      <img
-        :src="qrCodeUrl"
-        width="250"
-        height="250"
-        class="max-w-full h-auto rounded-3xl bg-white" />
+      <QrCode :value="shareUrl" />
       <strong class="block text-lg">
         Scan QR code or copy URL
       </strong>
@@ -70,9 +66,6 @@ export default {
       } else {
         return link
       }
-    },
-    qrCodeUrl() {
-      return `https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=${this.shareUrl}&choe=UTF-8`
     }
   },
   methods: {

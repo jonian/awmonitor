@@ -28,11 +28,7 @@
     class="dark text-white"
     @confirm="onConfirm">
     <div class="flex flex-col items-center justify-center min-h-full py-4 space-y-4">
-      <img
-        :src="qrCodeUrl"
-        width="250"
-        height="250"
-        class="max-w-full h-auto rounded-3xl bg-white" />
+      <QrCode :value="account" />
       <strong class="block text-lg">
         WAX Account Name: {{ account }}
       </strong>
@@ -54,9 +50,6 @@ export default {
   computed: {
     showTip() {
       return showTip.value
-    },
-    qrCodeUrl() {
-      return `https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=${this.account}&choe=UTF-8`
     }
   },
   methods: {
