@@ -54,7 +54,13 @@
         <div class="flex items-baseline flex-nowrap space-x-2">
           <Icon name="calendar-alt" class="text-gray-dark" />
           <span class="text-sm">Last Mined</span>
-          <strong class="text-sm">{{ lastMinedAt }}</strong>
+          <DateTime
+            :value="lastMinedAt"
+            tag="strong"
+            empty="Loading..."
+            class="text-sm"
+            relative
+            utc />
         </div>
         <div class="flex items-center space-x-1 text-xs">
           <a
@@ -80,8 +86,6 @@
 </template>
 
 <script>
-import { dayjs } from '@/utils'
-
 export default {
   name: 'AccountCard',
   inject: ['$app', '$screen'],
@@ -99,11 +103,8 @@ export default {
       ]
     },
     lastMinedAt() {
-      if (this.account.lastMine) {
-        return dayjs.utc(this.account.lastMine.last_mine).fromNow()
-      } else {
-        return 'Loading...'
-      }
+      const lastMine = this.account.lastMine
+      return lastMine && lastMine.last_mine
     },
     history() {
       const items = [...this.account.history]
