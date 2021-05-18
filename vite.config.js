@@ -24,8 +24,10 @@ export default {
       'vue-demi'
     ]
   },
-  alias: {
-    '@/': `${path.resolve(__dirname, 'src')}/`
+  resolve: {
+    alias: {
+      '@/': `${path.resolve(__dirname, 'src')}/`
+    }
   },
   plugins: [
     Vue(),
