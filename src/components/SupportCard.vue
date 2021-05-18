@@ -38,13 +38,14 @@
 
 <script>
 import { showTip } from '@/store'
+import { waxAccount } from '@/utils'
 
 export default {
   name: 'SupportCard',
   data() {
     return {
       showDialog: false,
-      account: 'la1dk.wam'
+      account: waxAccount
     }
   },
   computed: {

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { hashids, copyToClipboard } from '@/utils'
+import { appURL, hashids, copyToClipboard } from '@/utils'
 
 import LinkButton from '@/components/LinkButton.vue'
 import RoundedButton from '@/components/RoundedButton.vue'
@@ -58,13 +58,11 @@ export default {
       return this.showText ? 'Share' : null
     },
     shareUrl() {
-      const link = 'https://awmonitor.netlify.app'
-
       if (this.$app.hasAccounts) {
         const hash = hashids.encode(this.$app.accountNames)
-        return `${link}/share/${hash}`
+        return `${appURL}/share/${hash}`
       } else {
-        return link
+        return appURL
       }
     }
   },

@@ -2,7 +2,7 @@
   <footer class="border-t text-gray-dark dark:bg-black dark:border-gray-darkest">
     <div class="flex items-center justify-between container py-4">
       <a
-        href="https://github.com/jonian/awmonitor"
+        :href="githubURL"
         target="_blank"
         class="flex flex-nowrap items-center space-x-2">
         <Icon name="github" class="text-gray-light dark:text-gray-darker transform scale-125" />
@@ -21,7 +21,14 @@
 </template>
 
 <script>
+import { githubURL } from '@/utils'
+
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  data() {
+    return {
+      githubURL
+    }
+  }
 }
 </script>
