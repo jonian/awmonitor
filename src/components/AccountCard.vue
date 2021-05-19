@@ -22,12 +22,21 @@
               :expanded="!$screen.sm"
               type="WAX" />
           </div>
-          <div class="flex items-baseline space-x-2 mr-1">
-            <Icon
-              name="processor"
-              class="text-gray-dark" />
-            <span class="text-sm flex-grow sm:flex-grow-0">CPU Staked</span>
-            <strong class="text-sm">{{ account.cpu.staked.toFixed(2) }} WAX</strong>
+          <div class="flex flex-col lg:space-x-6 lg:flex-row mr-1">
+            <div class="flex items-baseline space-x-2">
+              <Icon
+                name="processor"
+                class="text-gray-dark" />
+              <span class="text-sm flex-grow sm:flex-grow-0">CPU Staked</span>
+              <strong class="text-sm">{{ account.cpu.staked.toFixed(2) }} WAX</strong>
+            </div>
+            <div class="flex items-baseline space-x-2">
+              <Icon
+                name="gold"
+                class="text-gray-dark" />
+              <span class="text-sm flex-grow sm:flex-grow-0">Land Commission</span>
+              <strong class="text-sm">{{ landCommission }}%</strong>
+            </div>
           </div>
         </div>
       </div>
@@ -97,6 +106,13 @@ export default {
         { text: 'View on Bloks', href: `https://wax.bloks.io/account/${this.account.name}` },
         { text: 'View NFT', href: `https://wax.atomichub.io/explorer/account/${this.account.name}` }
       ]
+    },
+    landCommission() {
+      if (this.account.lastMine) {
+        return this.account.lastMine.land.commission
+      } else {
+        return 0
+      }
     },
     lastMinedAt() {
       if (this.account.lastMine) {
