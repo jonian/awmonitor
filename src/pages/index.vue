@@ -6,7 +6,7 @@
         <AddAccountButton class="relative top-2 sm:top-0" />
       </div>
       <span class="text-sm text-gray-light">
-        Last update: <DateTime :value="$app.updatedAt" />
+        Last update: {{ updatedAt }}
       </span>
     </div>
     <div class="flex flex-col space-y-6">
@@ -21,8 +21,15 @@
 </template>
 
 <script>
+import { dayjs } from '@/utils'
+
 export default {
   name: 'HomePage',
-  inject: ['$app']
+  inject: ['$app'],
+  computed: {
+    updatedAt() {
+      return dayjs(this.$app.updatedAt).format('MMMM D YYYY, HH:mm:ss')
+    }
+  }
 }
 </script>
