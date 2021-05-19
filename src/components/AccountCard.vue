@@ -68,7 +68,7 @@
             :key="mine.last_mine_tx"
             :href="transactionLink(mine.last_mine_tx)"
             target="_blank">
-            <Tag :text="mine.info.quantity || 'ERROR'" />
+            <Tag :text="mine.info.quantity" />
           </a>
         </div>
       </div>

@@ -14,7 +14,7 @@ const parseTransaction = async (data) => {
       const val = res.traces[1].act.data
       data.info = { ...val, amount: parseAmount(val.quantity) }
     } catch {
-      data.info = { amount: 0.0 }
+      data.info = { quantity: '0.0000 TLM', amount: 0.0 }
     }
   }
 
