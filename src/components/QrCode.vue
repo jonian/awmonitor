@@ -28,22 +28,16 @@ export default {
   },
   methods: {
     updateCanvas() {
-      try {
-        const options = {
-          text: this.value,
-          radius: 0.0,
-          ecLevel: 'M',
-          fill: '#000000',
-          background: null,
-          size: 186
-        }
-
-        QrCreator.render(options, this.$refs.code)
-      } catch (e) {
-        console.log(e);
-      } finally {
-
+      const options = {
+        text: this.value,
+        radius: 0.0,
+        ecLevel: 'M',
+        fill: '#000000',
+        background: null,
+        size: 186
       }
+
+      QrCreator.render(options, this.$refs.code)
     }
   },
   mounted() {
