@@ -74,15 +74,12 @@ export default {
       }
     },
     async updateAccounts() {
-      const lastIdx = this.accounts.length - 1
+      const updates = this.accounts.map(async (account) => await account.update())
+      await Promise.all(updates)
 
-      this.accounts.forEach(async (account, index) => {
-        await account.update()
-
-        if (index == lastIdx) {
-          this.totalTLM = this.sumAmounts('tlm')
-          this.totalWAX = this.sumAmounts('wax')
-        }
+      this.$nextTick(() => {
+        this.totalTLM = this.sumAmounts('tlm')
+        this.totalWAX = this.sumAmounts('wax')
       })
     },
     saveAccountNames() {
