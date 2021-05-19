@@ -35,7 +35,7 @@
                 name="gold"
                 class="text-gray-dark" />
               <span class="text-sm flex-grow sm:flex-grow-0">Land Commission</span>
-              <strong class="text-sm">{{ landCommission }}%</strong>
+              <strong class="text-sm">{{ landCommission.toFixed(2) }}% TLM</strong>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ export default {
     },
     landCommission() {
       if (this.account.lastMine) {
-        return this.account.lastMine.land.commission
+        return this.account.lastMine.land.commission / 100
       } else {
         return 0
       }
