@@ -1,5 +1,4 @@
 export * from './wax'
-export * from './pink'
-export * from './greymass'
+export * from './producers'
 export * from './atomicassets'
 export * from './binance'
