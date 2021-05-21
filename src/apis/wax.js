@@ -4,7 +4,7 @@ const api = ky.create({
   prefixUrl: 'https://chain.wax.io/v1/chain'
 })
 
-const wax = {
+export const wax = {
   async getAccount(user) {
     const body = JSON.stringify({ account_name: user })
     return await api.post('get_account', { body }).json()
@@ -23,5 +23,3 @@ const wax = {
     return this.getBalance(user, { code: 'eosio.token', symbol: 'WAX' })
   }
 }
-
-export { wax }

@@ -1,8 +1,14 @@
 import ky from 'ky'
 
 const definition = {
-  async getTransaction(id) {
-    return await this.api.get('history/get_transaction', { searchParams: { id } }).json()
+  async getAccount(user) {
+    const body = JSON.stringify({ account_name: user })
+    return await this.api.post('chain/get_account', { body }).json()
+  },
+
+  async getBalance(user, options) {
+    const body = JSON.stringify({ account: user, ...options })
+    return await this.api.post('chain/get_currency_balance', { body }).json()
   },
 
   async getTableRows(user, scope, table) {
@@ -18,14 +24,8 @@ const definition = {
     return await this.api.post('chain/get_table_rows', { body }).json()
   },
 
-  async getAccount(user) {
-    const body = JSON.stringify({ account_name: user })
-    return await this.api.post('chain/get_account', { body }).json()
-  },
-
-  async getBalance(user, options) {
-    const body = JSON.stringify({ account: user, ...options })
-    return await this.api.post('chain/get_currency_balance', { body }).json()
+  async getTransaction(id) {
+    return await this.api.get('history/get_transaction', { searchParams: { id } }).json()
   },
 
   getTLM(user) {
