@@ -2,7 +2,14 @@ import { reactive, computed } from 'vue'
 import { wax, pink, eosrio, greymass, atomicassets } from '@/apis'
 
 const parseAmount = val => val ? parseFloat(val.slice(0, -4)) : 0.0
-const parseBalance = val => val ? { quantity: val, amount: parseAmount(val) } : { amount: 0.0 }
+
+const parseBalance = quantity => {
+  if (quantity) {
+    return { quantity, amount: parseAmount(quantity) }
+  } else {
+    return { quantity: '0.0000 TLM', amount: 0.0 }
+  }
+}
 
 const parseTransaction = async (data) => {
   try {
