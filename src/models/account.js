@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue'
-import { wax, pink, eosrio, greymass, atomicassets } from '@/apis'
+import { wax, pink, greymass, atomicassets } from '@/apis'
 
 const parseAmount = val => val ? parseFloat(val.slice(0, -4)) : 0.0
 
@@ -13,16 +13,11 @@ const parseBalance = quantity => {
 
 const parseTransaction = async (data) => {
   try {
-    const res = await eosrio.getTransaction(data.last_mine_tx)
-    data.info = res.actions[1].act.data
+    const res = await greymass.getTransaction(data.last_mine_tx)
+    const val = res.traces[1].act.data
+    data.info = { ...val, amount: parseAmount(val.quantity) }
   } catch {
-    try {
-      const res = await greymass.getTransaction(data.last_mine_tx)
-      const val = res.traces[1].act.data
-      data.info = { ...val, amount: parseAmount(val.quantity) }
-    } catch {
-      data.info = { quantity: '0.0000 TLM', amount: 0.0 }
-    }
+    data.info = { quantity: '0.0000 TLM', amount: 0.0 }
   }
 
   try {
