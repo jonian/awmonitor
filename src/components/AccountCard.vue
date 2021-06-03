@@ -5,6 +5,11 @@
         <div class="flex items-baseline space-x-2">
           <strong class="flex-grow sm:flex-grow-0">Miner: {{ account.tag || 'unknown' }}</strong>
           <strong class="text-gray-dark text-sm">{{ account.name }}</strong>
+          <strong
+            v-if="claims.length"
+            class="text-success text-sm">
+            {{ claims.length }} Unclaimed NFTs
+          </strong>
           <Icon
             name="trash"
             class="text-danger cursor-pointer"
@@ -127,6 +132,9 @@ export default {
       return this.$screen.md
         ? items
         : this.$screen.xs ? items.splice(-4) : items.splice(-3)
+    },
+    claims() {
+      return this.account.claims || []
     }
   },
   methods: {

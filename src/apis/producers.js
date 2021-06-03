@@ -42,6 +42,10 @@ const definition = {
 
   getMiner(user) {
     return this.getTableRows(user, 'm.federation', 'miners')
+  },
+
+  getClaims(user) {
+    return this.getTableRows(user, 'm.federation', 'claims')
   }
 }
 

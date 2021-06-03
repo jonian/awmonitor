@@ -63,6 +63,7 @@ export default class Account {
       error: null,
       account: {},
       history: [],
+      claims: [],
       lastMine: null,
       player: {},
       tlm: {},
@@ -81,6 +82,7 @@ export default class Account {
 
     this.history = computed(() => this.data.history)
     this.lastMine = computed(() => this.data.lastMine)
+    this.claims = computed(() => this.data.claims)
 
     this.init()
   }
@@ -106,6 +108,7 @@ export default class Account {
       await this._updateTLM()
       await this._updateWAX()
       await this._updateMiner()
+      await this._updateClaims()
       await this._updateAccount()
     } catch (err) {
       this.data.error = err
@@ -142,5 +145,10 @@ export default class Account {
     if (!this.data.history.some(item => item.last_mine_tx == mine.last_mine_tx)) {
       this.data.history = this.data.history.concat(mine).splice(-5)
     }
+  }
+
+  async _updateClaims() {
+    const data = await greymass.getClaims(this.name)
+    this.data.claims = data.rows.reduce((ids, item) => ([...ids, ...item.template_ids]), [])
   }
 }
