@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.2.0",
-    "@iconscout/unicons": "^3.0.3",
+    "@iconscout/unicons": "^4.0.0",
     "@vueuse/core": "^4.0.1",
-    "@vueuse/head": "^0.5.1",
+    "@vueuse/head": "^0.6.0",
     "dayjs": "^1.10.4",
     "js-base64": "^3.6.0",
     "ky": "^0.28.0",
@@ -31,8 +31,8 @@
     "sass": "^1.30.0",
     "tailwindcss": "^2.0.2",
     "vite": "^2.3.0",
-    "vite-plugin-components": "^0.9.1",
-    "vite-plugin-pages": "^0.11.1",
+    "vite-plugin-components": "^0.10.4",
+    "vite-plugin-pages": "^0.12.2",
     "vite-plugin-pwa": "^0.7.3",
     "vite-plugin-vue-layouts": "^0.3.1"
   }
