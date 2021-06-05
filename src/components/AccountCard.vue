@@ -3,13 +3,13 @@
     <div class="flex flex-col p-4 border-b dark:border-gray-darkest md:p-6 sm:flex-row">
       <div class="flex flex-col flex-grow space-y-4">
         <div class="flex items-baseline space-x-2">
-          <strong class="flex-grow sm:flex-grow-0">Miner: {{ account.tag || 'unknown' }}</strong>
-          <strong class="text-gray-dark text-sm">{{ account.name }}</strong>
+          <strong class="flex-grow sm:flex-grow-0">{{ account.tag || 'miner' }}</strong>
           <strong
             v-if="claims.length"
             class="text-success text-sm">
-            {{ claims.length }} Unclaimed NFTs
+            {{ claims.length }} NFTs
           </strong>
+          <strong class="text-gray-dark text-sm">{{ account.name }}</strong>
           <Icon
             name="trash"
             class="text-danger cursor-pointer"
