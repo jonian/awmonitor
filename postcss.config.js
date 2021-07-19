@@ -2,6 +2,9 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-    'postcss-font-display': {}
+    'postcss-font-display': {
+      display: 'swap',
+      replace: true
+    }
   }
 }
