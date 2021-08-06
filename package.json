@@ -32,9 +32,9 @@
     "sass": "^1.30.0",
     "tailwindcss": "^2.0.2",
     "vite": "^2.3.0",
-    "vite-plugin-components": "^0.12.2",
-    "vite-plugin-pages": "^0.15.0",
-    "vite-plugin-pwa": "^0.8.1",
+    "vite-plugin-components": "^0.13.2",
+    "vite-plugin-pages": "^0.16.0",
+    "vite-plugin-pwa": "^0.9.3",
     "vite-plugin-vue-layouts": "^0.3.1"
   }
 }
