@@ -7,7 +7,7 @@ export default {
       return
     }
 
-    if (!location.href.match(appURL)) {
+    if (!location.href.match(appURL) || location.href.match('share')) {
       return
     }
 
