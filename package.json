@@ -9,22 +9,22 @@
   "dependencies": {
     "@headlessui/vue": "^1.2.0",
     "@iconscout/unicons": "^4.0.0",
-    "@vueuse/core": "^5.1.3",
+    "@vueuse/core": "^5.3.0",
     "@vueuse/head": "^0.6.0",
     "dayjs": "^1.10.4",
     "js-base64": "^3.6.0",
     "ky": "^0.28.0",
     "qr-creator": "^1.0.0",
     "svg-gauge": "^1.0.6",
-    "vue": "^3.0.11",
-    "vue-router": "^4.0.6"
+    "vue": "^3.2.2",
+    "vue-router": "^4.0.11"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/typography": "^0.4.0",
-    "@vitejs/plugin-vue": "^1.0.5",
-    "@vue/compiler-sfc": "^3.0.2",
+    "@vitejs/plugin-vue": "^1.4.0",
+    "@vue/compiler-sfc": "^3.2.2",
     "autoprefixer": "^10.1.0",
     "cross-env": "^7.0.2",
     "postcss": "^8.2.4",
@@ -33,8 +33,8 @@
     "tailwindcss": "^2.0.2",
     "vite": "^2.3.0",
     "vite-plugin-components": "^0.13.2",
-    "vite-plugin-pages": "^0.16.0",
-    "vite-plugin-pwa": "^0.9.3",
+    "vite-plugin-pages": "^0.17.3",
+    "vite-plugin-pwa": "^0.10.0",
     "vite-plugin-vue-layouts": "^0.3.1"
   }
 }
