@@ -1,3 +1,5 @@
+import delay from 'delay'
+
 import { reactive, computed } from 'vue'
 import { wax, atomicassets } from '@/apis'
 
@@ -105,10 +107,19 @@ export default class Account {
     this.data.loading = true
 
     try {
+      await delay(500)
       await this._updateTLM()
+
+      await delay(500)
       await this._updateWAX()
+
+      await delay(500)
       await this._updateMiner()
+
+      await delay(500)
       await this._updateClaims()
+
+      await delay(500)
       await this._updateAccount()
     } catch (err) {
       this.data.error = err
