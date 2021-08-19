@@ -1,7 +1,7 @@
 import ky from 'ky'
 
 const api = ky.create({
-  prefixUrl: 'https://wax.cryptolions.io/v1'
+  prefixUrl: 'https://waxapi.ledgerwise.io/v1'
 })
 
 export const wax = {
