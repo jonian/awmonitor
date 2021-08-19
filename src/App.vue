@@ -9,8 +9,6 @@ import { Account } from '@/models'
 import { isDark, screen } from '@/utils'
 import { moneyType, accountNames } from '@/utils'
 
-import delay from 'delay'
-
 export default {
   name: 'App',
   provide() {
@@ -77,9 +75,7 @@ export default {
     },
     async updateAccounts() {
       this.accounts.forEach(async (account) => {
-        await delay(1000)
         await account.update()
-
         this.updateTotals()
       })
     },
