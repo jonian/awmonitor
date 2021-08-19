@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue'
-import { wax, pink, greymass, atomicassets } from '@/apis'
+import { wax, atomicassets } from '@/apis'
 
 const parseAmount = val => val ? parseFloat(val.slice(0, -4)) : 0.0
 
@@ -13,7 +13,7 @@ const parseBalance = quantity => {
 
 const parseTransaction = async (data) => {
   try {
-    const res = await greymass.getTransaction(data.last_mine_tx)
+    const res = await wax.getTransaction(data.last_mine_tx)
     const val = res.traces[1].act.data
     data.info = { ...val, amount: parseAmount(val.quantity) }
   } catch {
@@ -132,12 +132,12 @@ export default class Account {
   }
 
   async _updatePlayer() {
-    const data = await pink.getPlayer(this.name)
+    const data = await wax.getPlayer(this.name)
     this.data.player = data.rows[0]
   }
 
   async _updateMiner() {
-    const data = await pink.getMiner(this.name)
+    const data = await wax.getMiner(this.name)
     const mine = await parseTransaction(data.rows[0])
 
     this.data.lastMine = mine
@@ -148,7 +148,7 @@ export default class Account {
   }
 
   async _updateClaims() {
-    const data = await greymass.getClaims(this.name)
+    const data = await wax.getClaims(this.name)
     this.data.claims = data.rows.reduce((ids, item) => ([...ids, ...item.template_ids]), [])
   }
 }

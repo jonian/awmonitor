@@ -1,18 +1,36 @@
 import ky from 'ky'
 
 const api = ky.create({
-  prefixUrl: 'https://chain.wax.io/v1/chain'
+  prefixUrl: 'https://wax.cryptolions.io/v1'
 })
 
 export const wax = {
   async getAccount(user) {
     const body = JSON.stringify({ account_name: user })
-    return await api.post('get_account', { body }).json()
+    return await api.post('chain/get_account', { body }).json()
   },
 
   async getBalance(user, options) {
     const body = JSON.stringify({ account: user, ...options })
-    return await api.post('get_currency_balance', { body }).json()
+    return await api.post('chain/get_currency_balance', { body }).json()
+  },
+
+  async getTableRows(user, scope, table) {
+    const body = JSON.stringify({
+      json: true,
+      code: scope,
+      scope: scope,
+      table: table,
+      lower_bound: user,
+      upper_bound: user
+    })
+
+    return await api.post('chain/get_table_rows', { body }).json()
+  },
+
+  async getTransaction(id) {
+    const body = JSON.stringify({ id })
+    return await api.post('history/get_transaction', { body }).json()
   },
 
   getTLM(user) {
@@ -21,5 +39,17 @@ export const wax = {
 
   getWAX(user) {
     return this.getBalance(user, { code: 'eosio.token', symbol: 'WAX' })
+  },
+
+  getPlayer(user) {
+    return this.getTableRows(user, 'federation', 'players')
+  },
+
+  getMiner(user) {
+    return this.getTableRows(user, 'm.federation', 'miners')
+  },
+
+  getClaims(user) {
+    return this.getTableRows(user, 'm.federation', 'claims')
   }
 }
