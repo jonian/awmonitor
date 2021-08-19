@@ -9,6 +9,8 @@ import { Account } from '@/models'
 import { isDark, screen } from '@/utils'
 import { moneyType, accountNames } from '@/utils'
 
+import delay from 'delay'
+
 export default {
   name: 'App',
   provide() {
@@ -74,12 +76,11 @@ export default {
       }
     },
     async updateAccounts() {
-      const updates = this.accounts.map(async (account) => await account.update())
-      await Promise.all(updates)
+      this.accounts.forEach(async (account) => {
+        await delay(1000)
+        await account.update()
 
-      this.$nextTick(() => {
-        this.totalTLM = this.sumAmounts('tlm')
-        this.totalWAX = this.sumAmounts('wax')
+        this.updateTotals()
       })
     },
     saveAccountNames() {
@@ -93,6 +94,10 @@ export default {
         const amount = item[key] || 0
         return total + amount
       }, 0)
+    },
+    updateTotals() {
+      this.totalTLM = this.sumAmounts('tlm')
+      this.totalWAX = this.sumAmounts('wax')
     },
     refresh() {
       this.updateTlmPrice()
