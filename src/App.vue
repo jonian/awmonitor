@@ -113,7 +113,7 @@ export default {
     addAccount(name) {
       if (!this.accountNames.includes(name)) {
         const account = new Account(name)
-        account.update()
+        account.update(() => this.updateTotals())
 
         this.accounts.push(account)
         this.saveAccountNames()
@@ -122,7 +122,9 @@ export default {
     removeAccount(name) {
       const index = this.accounts.findIndex(account => account.name == name)
       this.accounts.splice(index, 1)
+
       this.saveAccountNames()
+      this.updateTotals()
     }
   }
 }

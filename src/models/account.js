@@ -102,7 +102,7 @@ export default class Account {
     }
   }
 
-  async update() {
+  async update(onUpdate) {
     this.data.error = null
     this.data.loading = true
 
@@ -126,6 +126,8 @@ export default class Account {
     } finally {
       this.data.loading = false
     }
+
+    onUpdate && onUpdate(this)
   }
 
   async _updateAccount() {
