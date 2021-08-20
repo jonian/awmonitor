@@ -3,7 +3,12 @@
     <div class="flex flex-col p-4 border-b dark:border-gray-darkest md:p-6 sm:flex-row">
       <div class="flex flex-col flex-grow space-y-4">
         <div class="flex items-baseline space-x-2">
-          <strong class="flex-grow sm:flex-grow-0">{{ account.tag || 'miner' }}</strong>
+          <div class="flex items-baseline space-x-2 flex-grow sm:flex-grow-0">
+            <strong>{{ account.tag || 'miner' }}</strong>
+            <Countdown
+              :date="nextMineAt"
+              class="text-info text-sm" />
+          </div>
           <strong
             v-if="claims.length"
             class="text-success text-sm">
@@ -124,6 +129,13 @@ export default {
         return dayjs.utc(this.account.lastMine.last_mine).fromNow()
       } else {
         return 'Loading...'
+      }
+    },
+    nextMineAt() {
+      if (this.account.nextMine) {
+        return dayjs.utc(this.account.nextMine).toDate()
+      } else {
+        return null
       }
     },
     history() {

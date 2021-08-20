@@ -13,6 +13,7 @@
     "@vueuse/head": "^0.6.0",
     "dayjs": "^1.10.4",
     "delay": "^5.0.0",
+    "format-duration": "^1.4.0",
     "js-base64": "^3.6.0",
     "ky": "^0.28.0",
     "qr-creator": "^1.0.0",

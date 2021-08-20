@@ -1167,6 +1167,11 @@ acorn@^7.0.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
+add-zero@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/add-zero/-/add-zero-1.0.0.tgz#88e221696717f66db467672f3f9aa004de9f1a2c"
+  integrity sha1-iOIhaWcX9m20Z2cvP5qgBN6fGiw=
+
 ajv@^8.6.0:
   version "8.6.2"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.6.2.tgz#2fb45e0e5fcbc0813326c1c3da535d1881bb0571"
@@ -2059,6 +2064,14 @@ foreach@^2.0.5:
   resolved "https://registry.yarnpkg.com/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
   integrity sha1-C+4AUBiusmDQo6865ljdATbsG5k=
 
+format-duration@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/format-duration/-/format-duration-1.4.0.tgz#6ad86c88f504150873cd28ca82d26a26898d9971"
+  integrity sha512-Mcg3hOAiKxo6JRBgfrQ+sbVvr3D9/4wE7eDQXx3WV2d/yKmrcHXHJS4OhrqVeg+iiFE2Op+pHhdOkQUl8yIclw==
+  dependencies:
+    add-zero "^1.0.0"
+    parse-ms "^1.0.1"
+
 fraction.js@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.1.1.tgz#ac4e520473dae67012d618aab91eda09bcb400ff"
@@ -2939,6 +2952,11 @@ parse-json@^5.0.0:
     error-ex "^1.3.1"
     json-parse-even-better-errors "^2.3.0"
     lines-and-columns "^1.1.6"
+
+parse-ms@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/parse-ms/-/parse-ms-1.0.1.tgz#56346d4749d78f23430ca0c713850aef91aa361d"
+  integrity sha1-VjRtR0nXjyNDDKDHE4UK75GqNh0=
 
 parse-svg-path@^0.1.2:
   version "0.1.2"
