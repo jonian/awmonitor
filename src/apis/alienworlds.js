@@ -4,7 +4,7 @@ const api = ky.create({
   prefixUrl: 'https://api.alienworlds.io/v1/alienworlds'
 })
 
-const alienworlds = {
+export const alienworlds = {
   async getMines(searchParams) {
     return await api.get('mines', { searchParams }).json()
   },
@@ -23,5 +23,3 @@ const alienworlds = {
     return nextMineDate
   }
 }
-
-export { alienworlds }
