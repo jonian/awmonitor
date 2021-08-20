@@ -6,6 +6,7 @@
           <div class="flex items-baseline space-x-2 flex-grow sm:flex-grow-0">
             <strong>{{ account.tag || 'miner' }}</strong>
             <Countdown
+              v-if="nextMineAt"
               :date="nextMineAt"
               class="text-info text-sm" />
           </div>
