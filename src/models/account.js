@@ -1,7 +1,8 @@
 import delay from 'delay'
 
 import { reactive, computed } from 'vue'
-import { wax, atomicassets } from '@/apis'
+import { wax, atomicassets, alienworlds } from '@/apis'
+import { dayjs } from '@/utils'
 
 const parseAmount = val => val ? parseFloat(val.slice(0, -4)) : 0.0
 
@@ -67,6 +68,7 @@ export default class Account {
       history: [],
       claims: [],
       lastMine: null,
+      nextMine: null,
       player: {},
       tlm: {},
       wax: {}
@@ -84,6 +86,7 @@ export default class Account {
 
     this.history = computed(() => this.data.history)
     this.lastMine = computed(() => this.data.lastMine)
+    this.nextMine = computed(() => this.data.nextMine)
     this.claims = computed(() => this.data.claims)
 
     this.init()
@@ -115,6 +118,9 @@ export default class Account {
 
       await delay(500)
       await this._updateMiner()
+
+      await delay(500)
+      await this._updateNext()
 
       await delay(500)
       await this._updateClaims()
@@ -158,6 +164,13 @@ export default class Account {
     if (!this.data.history.some(item => item.last_mine_tx == mine.last_mine_tx)) {
       this.data.history = this.data.history.concat(mine).splice(-5)
     }
+  }
+
+  async _updateNext() {
+    const mine = await alienworlds.getLastMine(this.name)
+    const date = dayjs.utc(this.data.lastMine.last_mine)
+
+    this.data.nextMine = date.add(mine.params.delay, 'second').toString()
   }
 
   async _updateClaims() {
