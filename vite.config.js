@@ -48,6 +48,7 @@ export default {
       registerType: 'autoUpdate',
       injectRegister: 'inline',
       includeAssets: [
+        'robots.txt',
         '*.svg',
         '*.png'
       ],
