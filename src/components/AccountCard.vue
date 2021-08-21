@@ -88,19 +88,16 @@
         </div>
       </div>
       <div class="flex px-4 py-2 items-baseline justify-between space-x-4 font-semibold text-primary md:px-6 lg:py-4">
-        <div
+        <a
           v-for="link in links"
           :key="link.href"
+          :href="link.href"
+          target="_blank"
+          rel="noreferrer"
           class="flex flex-nowrap items-baseline space-x-2">
           <Icon name="external-link-alt" />
-          <a
-            :href="link.href"
-            target="_blank"
-            rel="noreferrer"
-            class="text-sm">
-            {{ link.text }}
-          </a>
-        </div>
+          <span class="text-sm">{{ link.text }}</span>
+        </a>
       </div>
     </div>
   </div>
