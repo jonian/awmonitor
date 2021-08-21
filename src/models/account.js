@@ -97,6 +97,7 @@ export default class Account {
     this.data.loading = true
 
     try {
+      await delay(500)
       await this._updatePlayer()
     } catch (err) {
       this.data.error = err
@@ -111,6 +112,9 @@ export default class Account {
 
     try {
       await delay(500)
+      await this._updateAccount()
+
+      await delay(500)
       await this._updateTLM()
 
       await delay(500)
@@ -124,9 +128,6 @@ export default class Account {
 
       await delay(500)
       await this._updateClaims()
-
-      await delay(500)
-      await this._updateAccount()
     } catch (err) {
       this.data.error = err
     } finally {
