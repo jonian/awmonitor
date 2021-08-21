@@ -4,6 +4,7 @@
       <a
         :href="githubURL"
         target="_blank"
+        rel="noreferrer"
         class="flex flex-nowrap items-center space-x-2">
         <Icon name="github" class="text-gray-light dark:text-gray-darker transform scale-125" />
         <span class="text-sm">View on GitHub</span>
@@ -11,6 +12,7 @@
       <a
         href="https://vuejs.org"
         target="_blank"
+        rel="noreferrer"
         class="flex flex-nowrap items-center space-x-2">
         <span class="text-sm">Created with</span>
         <Icon name="vuejs" class="text-gray-light dark:text-gray-darker transform scale-125" />

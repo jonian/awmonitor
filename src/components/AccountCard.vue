@@ -81,7 +81,8 @@
             v-for="mine in history"
             :key="mine.last_mine_tx"
             :href="transactionLink(mine.last_mine_tx)"
-            target="_blank">
+            target="_blank"
+            rel="noreferrer">
             <Tag :text="mine.info.quantity" />
           </a>
         </div>
@@ -92,7 +93,13 @@
           :key="link.href"
           class="flex flex-nowrap items-baseline space-x-2">
           <Icon name="external-link-alt" />
-          <a :href="link.href" target="_blank" class="text-sm">{{ link.text }}</a>
+          <a
+            :href="link.href"
+            target="_blank"
+            rel="noreferrer"
+            class="text-sm">
+            {{ link.text }}
+          </a>
         </div>
       </div>
     </div>
