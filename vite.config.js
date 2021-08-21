@@ -52,15 +52,6 @@ export default {
         '*.svg',
         '*.png'
       ],
-      workbox: {
-        globPatterns: [
-          'assets/*.ttf',
-          'assets/*.eot',
-          'assets/*.woff',
-          'assets/*.woff2',
-          'assets/*.svg'
-        ]
-      },
       manifest: {
         name: 'AW Monitor',
         short_name: 'AW Monitor',
