@@ -11,6 +11,12 @@ const importMode = path => {
   return 'async'
 }
 
+const HeadlessUiResolver = name => {
+  if (name.startsWith('Hui')) {
+    return { importName: name.slice(3), path: '@headlessui/vue' }
+  }
+}
+
 export default {
   assetsDir: 'assets',
   optimizeDeps: {
@@ -33,7 +39,11 @@ export default {
     Vue(),
     Pages({ importMode }),
     Layouts(),
-    Components(),
+    Components({
+      customComponentResolvers: [
+        HeadlessUiResolver
+      ]
+    }),
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'inline',

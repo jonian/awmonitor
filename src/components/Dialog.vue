@@ -1,16 +1,16 @@
 <template>
-  <Dialog
+  <HuiDialog
     :open="modelValue"
     class="fixed inset-0 z-50 text-black dark:text-white"
     @close="onCancel">
     <div
       :class="{ 'items-stretch': !panelMode, 'items-end': panelMode }"
       class="flex justify-center h-full sm:items-center">
-      <DialogOverlay class="fixed inset-0 bg-black opacity-75" />
+      <HuiDialogOverlay class="fixed inset-0 bg-black opacity-75" />
       <div
         :class="{ 'sm:max-w-md': small, 'sm:max-w-2xl': medium, 'sm:max-w-6xl': large, 'border-t': panelMode }"
         class="flex flex-col w-full m-0 sm:m-6 bg-white border-white z-10 sm:border sm:shadow-md sm:rounded dark:bg-black dark:border-gray-darkest">
-        <DialogTitle class="flex items-center justify-between p-4 border-b dark:border-gray-darkest">
+        <HuiDialogTitle class="flex items-center justify-between p-4 border-b dark:border-gray-darkest">
           <span class="text-lg font-bold">
             {{ title }}
           </span>
@@ -18,10 +18,10 @@
             name="times-circle"
             class="cursor-pointer opacity-50 hover:opacity-75"
             @click="onCancel" />
-        </DialogTitle>
-        <DialogDescription class="flex-grow p-4 overflow-y-auto">
+        </HuiDialogTitle>
+        <HuiDialogDescription class="flex-grow p-4 overflow-y-auto">
           <slot />
-        </DialogDescription>
+        </HuiDialogDescription>
         <div
           v-if="buttons"
           class="flex items-center justify-between p-4 border-t dark:border-gray-darkest">
@@ -40,19 +40,12 @@
         </div>
       </div>
     </div>
-  </Dialog>
+  </HuiDialog>
 </template>
 
 <script>
-import { Dialog, DialogOverlay, DialogTitle, DialogDescription } from '@headlessui/vue'
-
 export default {
-  components: {
-    Dialog,
-    DialogOverlay,
-    DialogTitle,
-    DialogDescription
-  },
+  name: 'Dialog',
   props: {
     modelValue: {
       type: Boolean,
