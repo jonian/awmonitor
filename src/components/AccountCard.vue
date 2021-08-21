@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { dayjs } from '@/utils'
+import { dayjs, timeAgo } from '@/utils'
 
 export default {
   name: 'AccountCard',
@@ -127,7 +127,7 @@ export default {
     },
     lastMinedAt() {
       if (this.account.lastMine) {
-        return dayjs.utc(this.account.lastMine.last_mine).fromNow()
+        return timeAgo(this.account.lastMine.last_mine)
       } else {
         return 'Loading...'
       }
