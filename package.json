@@ -7,7 +7,7 @@
     "build": "cross-env NODE_ENV=production vite build"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.2.0",
+    "@headlessui/vue": "^1.4.1",
     "@iconscout/unicons": "^4.0.0",
     "@vueuse/core": "^6.0.0",
     "@vueuse/head": "^0.6.0",
@@ -32,10 +32,10 @@
     "postcss": "^8.2.4",
     "postcss-font-display": "^0.2.1",
     "sass": "^1.38.2",
-    "tailwindcss": "^2.2.8",
+    "tailwindcss": "^2.2.9",
     "vite": "^2.5.1",
-    "vite-plugin-components": "^0.13.2",
-    "vite-plugin-pages": "^0.17.5",
+    "vite-plugin-components": "^0.13.3",
+    "vite-plugin-pages": "^0.18.0",
     "vite-plugin-pwa": "^0.11.2",
     "vite-plugin-vue-layouts": "^0.3.1"
   }
