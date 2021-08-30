@@ -6,7 +6,7 @@
 import { binance } from '@/apis'
 import { Account } from '@/models'
 
-import { isDark, screen } from '@/utils'
+import { isDark, isOnline, screen, isTimeAfter } from '@/utils'
 import { moneyType, accountNames } from '@/utils'
 
 export default {
@@ -23,6 +23,13 @@ export default {
         document.documentElement.classList.toggle('dark', value)
       },
       immediate: true
+    },
+    isOnline: {
+      handler() {
+        if (!this.updatedAt || isTimeAfter(this.updatedAt, 60)) {
+          this.scheduleRefresh(3000)
+        }
+      }
     },
     accountNames: {
       handler() {
@@ -47,6 +54,9 @@ export default {
   computed: {
     isDark() {
       return isDark.value
+    },
+    isOnline() {
+      return isOnline.value
     },
     moneyType() {
       return moneyType.value
@@ -96,15 +106,17 @@ export default {
       this.totalWAX = this.sumAmounts('wax')
     },
     refresh() {
-      this.updateTlmPrice()
-      this.updateAccounts()
+      if (this.isOnline) {
+        this.updateTlmPrice()
+        this.updateAccounts()
 
-      this.updatedAt = new Date()
-      this.scheduleRefresh()
+        this.updatedAt = new Date()
+        this.scheduleRefresh()
+      }
     },
-    scheduleRefresh() {
+    scheduleRefresh(ms = 60000) {
       clearTimeout(this.updateId)
-      this.updateId = setTimeout(() => this.refresh(), 60000)
+      this.updateId = setTimeout(() => this.refresh(), ms)
     },
     addAccount(name) {
       if (!this.accountNames.includes(name)) {

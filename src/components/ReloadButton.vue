@@ -3,7 +3,7 @@
     v-if="$app.hasAccounts"
     :is="tag"
     :text="text"
-    :disabled="$app.loading"
+    :disabled="$app.loading || !$app.isOnline"
     class="text-success"
     icon="redo"
     @click="onClick" />
