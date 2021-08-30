@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      updatedAt: new Date(),
+      updatedAt: null,
       updateId: null,
       tlmPrice: 0,
       totalTLM: null,

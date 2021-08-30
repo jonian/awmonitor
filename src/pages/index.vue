@@ -28,7 +28,11 @@ export default {
   inject: ['$app'],
   computed: {
     updatedAt() {
-      return dayjs(this.$app.updatedAt).format('MMMM D YYYY, HH:mm:ss')
+      if (this.$app.updatedAt) {
+        return dayjs(this.$app.updatedAt).format('MMMM D YYYY, HH:mm:ss')
+      } else {
+        return 'Not updated'
+      }
     }
   }
 }
