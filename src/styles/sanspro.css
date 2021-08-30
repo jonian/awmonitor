@@ -1,0 +1,31 @@
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/source-sans-pro-light.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/source-sans-pro-regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/source-sans-pro-semibold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/source-sans-pro-bold.woff2') format('woff2');
+  font-display: swap;
+}

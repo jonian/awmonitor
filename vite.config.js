@@ -26,7 +26,6 @@ export default {
       '@vueuse/core'
     ],
     exclude: [
-      '@iconscout/unicons',
       'vue-demi'
     ]
   },
@@ -49,6 +48,8 @@ export default {
       injectRegister: 'inline',
       includeAssets: [
         'robots.txt',
+        'fonts/*.css',
+        'fonts/*.woff2',
         '*.svg',
         '*.png'
       ],

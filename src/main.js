@@ -5,7 +5,6 @@ import App from './App.vue'
 import router from './router'
 import counter from './counter'
 
-import '@iconscout/unicons/css/line.css'
 import './index.scss'
 
 const head = createHead()
