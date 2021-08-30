@@ -19,6 +19,7 @@
           :show-text="$screen.xs" />
       </div>
     </div>
+    <OnlineStatus />
   </header>
 </template>
 
