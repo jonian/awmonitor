@@ -4,6 +4,10 @@ const api = ky.create({
   prefixUrl: 'https://waxapi.ledgerwise.io/v1'
 })
 
+const atx = ky.create({
+  prefixUrl: 'https://wax.greymass.com/v1'
+})
+
 export const wax = {
   async getAccount(user) {
     const body = JSON.stringify({ account_name: user })
@@ -30,7 +34,7 @@ export const wax = {
 
   async getTransaction(id) {
     const body = JSON.stringify({ id })
-    return await api.post('history/get_transaction', { body }).json()
+    return await atx.post('history/get_transaction', { body }).json()
   },
 
   getTLM(user) {
