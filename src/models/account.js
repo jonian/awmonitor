@@ -164,12 +164,11 @@ export default class Account {
 
   async _updateMiner() {
     const data = await wax.getMiner(this.name)
-    const mine = await parseTransaction(data.rows[0])
-
-    this.data.lastMine = mine
+    const mine = data.rows[0]
 
     if (!this.data.history.some(item => item.last_mine_tx == mine.last_mine_tx)) {
-      this.data.history = this.data.history.concat(mine).splice(-5)
+      this.data.lastMine = await parseTransaction(mine)
+      this.data.history  = [...this.data.history, this.data.lastMine].splice(-5)
     }
   }
 
