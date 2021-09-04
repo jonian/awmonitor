@@ -134,6 +134,9 @@ export default class Account {
 
       await delay(500)
       await this._updateClaims()
+
+      await delay(500)
+      await this._updateHistory()
     } catch (err) {
       this.data.error = err
     } finally {
@@ -170,6 +173,15 @@ export default class Account {
       this.data.lastMine = await parseTransaction(mine)
       this.data.history  = [...this.data.history, this.data.lastMine].splice(-5)
     }
+  }
+
+  async _updateHistory() {
+    this.data.history.forEach(async item => {
+      if (item.info.amount == 0) {
+        await parseTransaction(item)
+        await delay(500)
+      }
+    })
   }
 
   async _updateNext() {
