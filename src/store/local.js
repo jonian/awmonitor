@@ -19,3 +19,13 @@ export const showTip = useStorage(
   'show-tip',
   true
 )
+
+export const tlmPrice = useStorage(
+  'tlm-price',
+  0
+)
+
+export const updatedAt = useStorage(
+  'updated-at',
+  null
+)

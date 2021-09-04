@@ -8,6 +8,7 @@ import { Account } from '@/models'
 
 import { isDark, isOnline, screen, isTimeAfter } from '@/utils'
 import { moneyType, accountNames } from '@/utils'
+import { tlmPrice, updatedAt } from '@/store'
 
 export default {
   name: 'App',
@@ -43,9 +44,7 @@ export default {
   },
   data() {
     return {
-      updatedAt: null,
       updateId: null,
-      tlmPrice: 0,
       totalTLM: null,
       totalWAX: null,
       accounts: []
@@ -60,6 +59,12 @@ export default {
     },
     moneyType() {
       return moneyType.value
+    },
+    tlmPrice() {
+      return tlmPrice.value
+    },
+    updatedAt() {
+      return updatedAt.value
     },
     accountNames() {
       return accountNames.value
@@ -78,9 +83,9 @@ export default {
     async updateTlmPrice() {
       try {
         const data = await binance.avgPrice(this.moneyType)
-        this.tlmPrice = parseFloat(data.price)
+        tlmPrice.value = parseFloat(data.price)
       } catch (e) {
-        this.tlmPrice = 0
+        return
       }
     },
     async updateAccounts() {
@@ -110,8 +115,10 @@ export default {
         this.updateTlmPrice()
         this.updateAccounts()
 
-        this.updatedAt = new Date()
+        updatedAt.value = new Date()
         this.scheduleRefresh()
+      } else {
+        this.updateTotals()
       }
     },
     scheduleRefresh(ms = 60000) {

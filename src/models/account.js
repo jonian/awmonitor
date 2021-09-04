@@ -1,6 +1,7 @@
 import delay from 'delay'
 
 import { reactive, computed } from 'vue'
+import { useStorage } from '@vueuse/core'
 import { wax, atomicassets, alienworlds } from '@/apis'
 import { dayjs } from '@/utils'
 
@@ -60,8 +61,7 @@ const parseRamLimit = ({ ram_quota, ram_usage, total_resources }) => {
 
 export default class Account {
   constructor(name) {
-    this.name = name
-    this.data = reactive({
+    const state = {
       loading: false,
       error: null,
       account: {},
@@ -72,7 +72,13 @@ export default class Account {
       player: {},
       tlm: {},
       wax: {}
-    })
+    }
+
+    const store = useStorage(`store-${name}`, state)
+    store.value = { ...state, ...store.value, history: store.value.history.splice(-1) }
+
+    this.name = name
+    this.data = reactive(store.value)
 
     this.tag = computed(() => this.data.player.tag)
     this.tlm = computed(() => this.data.tlm.amount)
