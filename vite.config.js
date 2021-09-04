@@ -23,7 +23,11 @@ export default {
     include: [
       'vue',
       'vue-router',
-      '@vueuse/core'
+      '@vueuse/core',
+      '@headlessui/vue',
+      'format-duration',
+      'svg-gauge',
+      'qr-creator'
     ],
     exclude: [
       'vue-demi'
