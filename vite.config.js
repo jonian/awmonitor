@@ -1,7 +1,7 @@
 import path from 'path'
 
 import Vue from '@vitejs/plugin-vue'
-import Components from 'vite-plugin-components'
+import Components from 'unplugin-vue-components/vite'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -43,7 +43,7 @@ export default {
     Pages({ importMode }),
     Layouts(),
     Components({
-      customComponentResolvers: [
+      resolvers: [
         HeadlessUiResolver
       ]
     }),
