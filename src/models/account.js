@@ -1,7 +1,6 @@
 import delay from 'delay'
 
 import { reactive, computed } from 'vue'
-import { useStorage } from '@vueuse/core'
 import { wax, atomicassets, alienworlds } from '@/apis'
 import { dayjs } from '@/utils'
 
@@ -61,7 +60,8 @@ const parseRamLimit = ({ ram_quota, ram_usage, total_resources }) => {
 
 export default class Account {
   constructor(name) {
-    const state = {
+    this.name = name
+    this.data = reactive({
       loading: false,
       error: null,
       account: {},
@@ -72,13 +72,7 @@ export default class Account {
       player: {},
       tlm: {},
       wax: {}
-    }
-
-    const store = useStorage(`store-${name}`, state)
-    store.value = { ...state, ...store.value, history: store.value.history.splice(-1) }
-
-    this.name = name
-    this.data = reactive(store.value)
+    })
 
     this.tag = computed(() => this.data.player.tag)
     this.tlm = computed(() => this.data.tlm.amount)
@@ -98,7 +92,34 @@ export default class Account {
     this.init()
   }
 
+  loadState() {
+    const store = localStorage.getItem(`store-${this.name}`)
+    const state = JSON.parse(store || '{}')
+
+    Object.keys(state).forEach(key => {
+      if (!key.match(/error|loading/)) {
+        this.data[key] = state[key]
+      }
+    })
+  }
+
+  saveState() {
+    const state = Object.keys(this.data).reduce((object, key) => {
+      if (key == 'history' && this.data.lastMine) {
+        object[key] = [{ ...this.data.lastMine, stale: true }]
+      } else if (!key.match(/error|loading/)) {
+        object[key] = this.data[key]
+      }
+
+      return object
+    }, {})
+
+    localStorage.setItem(`store-${this.name}`, JSON.stringify(state))
+  }
+
   async init() {
+    this.loadState()
+
     this.data.error = null
     this.data.loading = true
 
@@ -109,6 +130,7 @@ export default class Account {
       this.data.error = err
     } finally {
       this.data.loading = false
+      this.saveState()
     }
   }
 
@@ -141,6 +163,7 @@ export default class Account {
       this.data.error = err
     } finally {
       this.data.loading = false
+      this.saveState()
     }
 
     onUpdate && onUpdate(this)
@@ -172,6 +195,10 @@ export default class Account {
     if (!this.data.history.some(item => item.last_mine_tx == mine.last_mine_tx)) {
       this.data.lastMine = await parseTransaction(mine)
       this.data.history  = [...this.data.history, this.data.lastMine].splice(-5)
+    }
+
+    if (this.data.history.length > 1 && this.data.history.some(({ stale }) => stale)) {
+      this.data.history = this.data.history.filter(({ stale }) => !stale)
     }
   }
 
