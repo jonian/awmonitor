@@ -89,10 +89,9 @@ export default {
       }
     },
     async updateAccounts() {
-      this.accounts.forEach(async (account) => {
-        await account.update()
-        this.updateTotals()
-      })
+      for (const account of this.accounts) {
+        await account.update(() => this.updateTotals())
+      }
     },
     saveAccountNames() {
       this._saveAccounts = true
