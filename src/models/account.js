@@ -180,14 +180,17 @@ export default class Account {
   async _updateMiner() {
     const data = await wax.getMiner(this.name)
     const mine = data.rows[0]
+    const last = this.data.history.find(item => item.last_mine_tx == mine.last_mine_tx)
 
-    if (!this.data.history.some(item => item.last_mine_tx == mine.last_mine_tx)) {
+    if (last == null) {
       this.data.lastMine = await parseTransaction(mine)
       this.data.history  = [...this.data.history, this.data.lastMine].splice(-5)
+    } else {
+      last.stale = false
     }
 
-    if (this.data.history.length > 1 && this.data.history.some(({ stale }) => stale)) {
-      this.data.history = this.data.history.filter(({ stale }) => !stale)
+    if (this.data.history.length == 2 && this.data.history[0].stale) {
+      this.data.history = Array.of(this.data.history[1])
     }
   }
 
