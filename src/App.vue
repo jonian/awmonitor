@@ -27,7 +27,7 @@ export default {
     },
     isOnline: {
       handler() {
-        if (!this.updatedAt || isTimeAfter(this.updatedAt, 60)) {
+        if (isTimeAfter(this.updatedAt, 60)) {
           this.scheduleRefresh(3000)
         }
       }

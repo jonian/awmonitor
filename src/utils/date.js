@@ -20,6 +20,5 @@ export const timeAgo = date => {
 }
 
 export const isTimeAfter = (date, value, unit = 'second') => {
-  const limit = dayjs(date).add(value, unit)
-  return dayjs().isAfter(limit)
+  return date ? dayjs().diff(date, unit) > value : true
 }
