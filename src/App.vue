@@ -111,14 +111,14 @@ export default {
       this.totalWAX = this.sumAmounts('wax')
     },
     refresh() {
+      this.updateTotals()
+
       if (this.isOnline) {
         this.updateTlmPrice()
         this.updateAccounts()
 
         updatedAt.value = new Date()
         this.scheduleRefresh()
-      } else {
-        this.updateTotals()
       }
     },
     scheduleRefresh(ms = 60000) {
