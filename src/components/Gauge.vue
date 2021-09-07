@@ -1,12 +1,49 @@
 <template>
-  <div
-    :style="{ width: size, height: size }"
-    ref="gauge" />
+  <div :style="{ width: size, height: size }">
+    <svg
+      :viewBox="viewBox"
+      width="100%"
+      height="100%"
+      xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <text
+          x="50"
+          y="50"
+          font-size="100%"
+          font-family="sans-serif"
+          font-weight="normal"
+          text-anchor="middle"
+          alignment-baseline="middle"
+          dominant-baseline="central"
+          fill="currentColor"
+          class="text-black dark:text-gray-light">
+          {{ value }}%
+        </text>
+        <circle
+          :stroke-width="strokeWidth"
+          :cy="radius"
+          :cx="radius"
+          :r="innerRadius"
+          fill="none"
+          stroke="currentColor"
+          class="text-gray-lighter dark:text-gray-darkest" />
+        <circle
+          :style="{ strokeDashoffset: dashOffset }"
+          :stroke-width="strokeWidth"
+          :stroke-dasharray="dashArray"
+          :cy="radius"
+          :cx="radius"
+          :r="innerRadius"
+          stroke="currentColor"
+          stroke-linecap="round"
+          fill="none"
+          class="transition-all duration-1000 ease-out transform origin-center -rotate-90" />
+      </g>
+    </svg>
+  </div>
 </template>
 
 <script>
-import Gauge from 'svg-gauge'
-
 export default {
   name: 'Gauge',
   props: {
@@ -17,70 +54,32 @@ export default {
     size: {
       type: String,
       default: '4rem'
+    },
+    radius: {
+      type: Number,
+      default: 50
+    },
+    strokeWidth: {
+      type: Number,
+      default: 20
     }
   },
-  watch: {
-    value(newValue, oldValue) {
-      if (newValue != oldValue) {
-        this.updateValue(newValue)
-      }
+  computed: {
+    percent() {
+      return Math.min(Math.max(this.value, 1), 100)
+    },
+    innerRadius() {
+      return this.radius - this.strokeWidth / 2
+    },
+    dashArray() {
+      return this.innerRadius * 2 * Math.PI
+    },
+    dashOffset() {
+      return this.dashArray - (this.percent / 100) * this.dashArray
+    },
+    viewBox() {
+      return `0 0 ${this.radius * 2} ${this.radius * 2}`
     }
-  },
-  data() {
-    return {
-      gauge: null
-    }
-  },
-  methods: {
-    updateValue(value) {
-      return this.gauge && this.gauge.setValueAnimated(value, 1)
-    }
-  },
-  mounted() {
-    this.gauge = Gauge(this.$refs.gauge, {
-      max: 100,
-      dialStartAngle: -90,
-      dialEndAngle: -90.001,
-      value: 0,
-      label: () => `${Math.round(this.value)}%`
-    })
-
-    this.updateValue(this.value)
   }
 }
 </script>
-
-<style lang="scss">
-.gauge {
-  font-size: 1rem;
-  font-weight: bold;
-
-  .dial, .value {
-    stroke-width: 20;
-    stroke-linecap: round;
-  }
-
-  .dial {
-    stroke: theme('colors.gray.lighter');
-  }
-
-  .value {
-    stroke: currentColor;
-  }
-
-  .value-text {
-    fill: theme('colors.black');
-  }
-}
-
-.dark .gauge {
-
-  .dial {
-    stroke: theme('colors.gray.darkest');
-  }
-
-  .value-text {
-    fill: theme('colors.gray.light');
-  }
-}
-</style>
