@@ -64,10 +64,15 @@ export default {
       default: 20
     }
   },
+  watch: {
+    value: 'updatePercent'
+  },
+  data() {
+    return {
+      percent: 0
+    }
+  },
   computed: {
-    percent() {
-      return Math.min(Math.max(this.value, 1), 100)
-    },
     innerRadius() {
       return this.radius - this.strokeWidth / 2
     },
@@ -80,6 +85,14 @@ export default {
     viewBox() {
       return `0 0 ${this.radius * 2} ${this.radius * 2}`
     }
+  },
+  methods: {
+    updatePercent() {
+      this.percent = Math.min(Math.max(this.value, 1), 100)
+    }
+  },
+  mounted() {
+    setTimeout(() => this.updatePercent(), 50)
   }
 }
 </script>
