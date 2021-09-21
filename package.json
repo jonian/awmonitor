@@ -31,6 +31,7 @@
     "postcss-font-display": "^0.2.1",
     "sass": "^1.39.0",
     "tailwindcss": "^2.2.11",
+    "unplugin-auto-import": "^0.4.6",
     "unplugin-vue-components": "^0.14.13",
     "vite": "^2.5.4",
     "vite-plugin-pages": "^0.18.0",

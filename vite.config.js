@@ -1,6 +1,8 @@
+import fs from 'fs'
 import path from 'path'
 
 import Vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
@@ -14,6 +16,14 @@ const importMode = path => {
 const HeadlessUiResolver = name => {
   if (name.startsWith('Hui')) {
     return { importName: name.slice(3), path: '@headlessui/vue' }
+  }
+}
+
+const DynamicComponentResolver = name => {
+  const file = path.resolve(__dirname, `src/components/${name}.vue`)
+
+  if (fs.existsSync(file)) {
+    return `@/components/${name}.vue`
   }
 }
 
@@ -41,6 +51,11 @@ export default {
     Vue(),
     Pages({ importMode }),
     Layouts(),
+    AutoImport({
+      resolvers: [
+        DynamicComponentResolver
+      ]
+    }),
     Components({
       resolvers: [
         HeadlessUiResolver

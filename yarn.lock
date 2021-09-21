@@ -3062,6 +3062,18 @@ universalify@^2.0.0:
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-2.0.0.tgz#75a4984efedc4b08975c5aeb73f530d02df25717"
   integrity sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==
 
+unplugin-auto-import@^0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/unplugin-auto-import/-/unplugin-auto-import-0.4.6.tgz#4a1efc7f22b4533885baf17c105b2181a4da7ceb"
+  integrity sha512-QCfCLsPUXPm8Xu81QKRLNCxb+6CwAUnQdH4x0Y+wD2xTZZmt7WHJoueQO5Y+tCtYAZ9QPg+b6wv+5FtBfIPkVw==
+  dependencies:
+    "@antfu/utils" "^0.3.0"
+    "@rollup/pluginutils" "^4.1.1"
+    has-pkg "^0.0.1"
+    magic-string "^0.25.7"
+    resolve "^1.20.0"
+    unplugin "^0.2.11"
+
 unplugin-vue-components@^0.14.13:
   version "0.14.13"
   resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.14.13.tgz#b8c7abe76d0f8eb194043aac7b9045eeef173c7e"
@@ -3075,6 +3087,14 @@ unplugin-vue-components@^0.14.13:
     minimatch "^3.0.4"
     resolve "^1.20.0"
     unplugin "^0.2.7"
+
+unplugin@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.2.11.tgz#f9f3f8b2b5a7c1b16325dbdea9568ee3652f6e49"
+  integrity sha512-PY8x+hG1smsF06chESP5BurwZN+tZK1tNjKsCXe4XFOfRCIOcrIPCrwBKwLSfeAdojVCtMjSpJ2e/l5QXNw16A==
+  dependencies:
+    upath "^2.0.1"
+    webpack-virtual-modules "^0.4.3"
 
 unplugin@^0.2.7:
   version "0.2.7"
