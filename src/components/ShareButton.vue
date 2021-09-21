@@ -28,20 +28,13 @@
 <script>
 import { appURL, hashids, copyToClipboard } from '@/utils'
 
-import LinkButton from '@/components/LinkButton.vue'
-import RoundedButton from '@/components/RoundedButton.vue'
-
 export default {
   name: 'ShareButton',
   inject: ['$app'],
-  components: {
-    LinkButton,
-    RoundedButton
-  },
   props: {
     tag: {
-      type: String,
-      default: 'RoundedButton'
+      type: [String, Object],
+      default: () => RoundedButton
     },
     showText: {
       type: Boolean,

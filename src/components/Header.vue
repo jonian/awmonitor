@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     buttonTag() {
-      return this.$screen.sm ? 'RoundedButton' : 'LinkButton'
+      return this.$screen.sm ? RoundedButton : LinkButton
     }
   }
 }
