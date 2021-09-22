@@ -1,181 +1,9 @@
 @font-face {
   font-family: 'unicons-line';
-  src: url('../fonts/unicons-0.woff2') format('woff2');
+  src: url('../fonts/unicons-line.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+E800-E83B;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-1.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+E83C-E877;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-10.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EA58-EA93;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-11.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EA94-EACF;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-12.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EAD0-EB0C;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-13.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EB0D-EB48;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-14.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EB49-EB84;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-15.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EB85-EBC0;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-16.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EBC1-EBFC;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-17.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EBFD-EC38;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-18.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EC39-EC74;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-19.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EC75-EC9E;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-2.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+E878-E8B3;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-3.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+E8B4-E8EF;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-4.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+E8F0-E92B;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-5.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+E92C-E967;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-6.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+E968-E9A3;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-7.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+E9A4-E9DF;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-8.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+E9E0-EA1B;
-}
-
-@font-face {
-  font-family: 'unicons-line';
-  src: url('../fonts/unicons-9.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+EA1C-EA57;
 }
 
 [class^="uil-"]:before,
@@ -186,7 +14,7 @@
   speak: none;
   display: inline-block;
   text-decoration: inherit;
-  /* For safety - reset parent styles, that can break glyph codes*/
+  /* For safety - reset parent styles, that can break glyph codes */
   font-variant: normal;
   text-transform: none;
   /* fix buttons height, for twitter bootstrap */
@@ -676,18 +504,6 @@
   content: '\e877';
 }
 
-.uil-forward:before {
-  content: '\ea58';
-}
-
-.uil-image-times:before {
-  content: '\ea59';
-}
-
-.uil-headphones-alt:before {
-  content: '\ea5a';
-}
-
 .uil-previous:before {
   content: '\ea5b';
 }
@@ -968,10 +784,6 @@
   content: '\eaa0';
 }
 
-.uil-vertical-align-center:before {
-  content: '\eaa1';
-}
-
 .uil-square-full:before {
   content: '\eaa2';
 }
@@ -1018,10 +830,6 @@
 
 .uil-temperature-half:before {
   content: '\eaad';
-}
-
-.uil-cloud-sun:before {
-  content: '\eaae';
 }
 
 .uil-layers-alt:before {
@@ -2884,20 +2692,12 @@
   content: '\ec80';
 }
 
-.uil-sanitizer-alt:before {
-  content: '\ec80';
-}
-
 .uil-envelope-block:before {
   content: '\ec81';
 }
 
 .uil-mailbox-alt:before {
   content: '\ec82';
-}
-
-.uil-raindrops-alt:before {
-  content: '\ec83';
 }
 
 .uil-signout:before {
@@ -3010,6 +2810,98 @@
 
 .uil-language:before {
   content: '\ec9e';
+}
+
+.uil-backspace:before {
+  content: '\ec9f';
+}
+
+.uil-window-grid:before {
+  content: '\eca0';
+}
+
+.uil-cloud-sun:before {
+  content: '\eca1';
+}
+
+.uil-vertical-align-center:before {
+  content: '\eca2';
+}
+
+.uil-raindrops-alt:before {
+  content: '\eca3';
+}
+
+.uil-sanitizer-alt:before {
+  content: '\eca4';
+}
+
+.uil-estate:before {
+  content: '\eca5';
+}
+
+.uil-file-contract:before {
+  content: '\eca6';
+}
+
+.uil-fidget-spinner:before {
+  content: '\eca7';
+}
+
+.uil-spinner:before {
+  content: '\eca8';
+}
+
+.uil-spinner-alt:before {
+  content: '\eca9';
+}
+
+.uil-elipsis-double-v-alt:before {
+  content: '\ecaa';
+}
+
+.uil-list-ol:before {
+  content: '\ecab';
+}
+
+.uil-list-ol-alt:before {
+  content: '\ecac';
+}
+
+.uil-docker:before {
+  content: '\ecad';
+}
+
+.uil-linux:before {
+  content: '\ecae';
+}
+
+.uil-hipchat:before {
+  content: '\ecaf';
+}
+
+.uil-gitlab:before {
+  content: '\ecb0';
+}
+
+.uil-lottiefiles-alt:before {
+  content: '\ecb1';
+}
+
+.uil-pagerduty:before {
+  content: '\ecb2';
+}
+
+.uil-microsoft:before {
+  content: '\ecb3';
+}
+
+.uil-windows:before {
+  content: '\ecb4';
+}
+
+.uil-pagelines:before {
+  content: '\ecb5';
 }
 
 .uil-grin:before {
@@ -3250,6 +3142,22 @@
 
 .uil-moneybag-alt:before {
   content: '\e8b3';
+}
+
+.uil-lottiefiles:before {
+  content: '\ecb6';
+}
+
+.uil-okta:before {
+  content: '\ecb7';
+}
+
+.uil-illustration:before {
+  content: '\ecb8';
+}
+
+.uil-icons:before {
+  content: '\ecb9';
 }
 
 .uil-bag-alt:before {
@@ -4208,10 +4116,6 @@
   content: '\e9a2';
 }
 
-.uil-home-alt:before {
-  content: '\e9a3';
-}
-
 .uil-home:before {
   content: '\e9a4';
 }
@@ -4382,10 +4286,6 @@
 
 .uil-key-skeleton:before {
   content: '\e9ce';
-}
-
-.uil-backspace:before {
-  content: '\e9cf';
 }
 
 .uil-adjust:before {
@@ -4872,10 +4772,6 @@
   content: '\ea48';
 }
 
-.uil-window-grid:before {
-  content: '\ea49';
-}
-
 .uil-image-shield:before {
   content: '\ea4a';
 }
@@ -4930,4 +4826,16 @@
 
 .uil-image-v:before {
   content: '\ea57';
+}
+
+.uil-forward:before {
+  content: '\ea58';
+}
+
+.uil-image-times:before {
+  content: '\ea59';
+}
+
+.uil-headphones-alt:before {
+  content: '\ea5a';
 }
