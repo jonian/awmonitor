@@ -2,7 +2,7 @@ import delay from 'delay'
 
 import { reactive, computed } from 'vue'
 import { wax, atomicassets, alienworlds } from '@/apis'
-import { dayjs } from '@/utils'
+import { dayjs, isOnline } from '@/utils'
 
 const parseAmount = val => val ? parseFloat(val.slice(0, -4)) : 0.0
 
@@ -95,6 +95,11 @@ export default class Account {
   loadState() {
     const store = localStorage.getItem(`store-${this.name}`)
     const state = JSON.parse(store || '{}')
+
+    if (isOnline.value) {
+      state.history = []
+      state.lastMine = null
+    }
 
     Object.keys(state).forEach(key => {
       if (!key.match(/error|loading/)) {
