@@ -6,7 +6,8 @@
     <span class="flex flex-nowrap items-baseline justify-center space-x-2">
       <Icon
         v-if="icon"
-        :name="icon" />
+        :name="icon"
+        :class="iconClass" />
       <slot>
         <span v-if="text">
           {{ text }}
@@ -30,6 +31,10 @@ export default {
     },
     icon: {
       type: String,
+      default: null
+    },
+    iconClass: {
+      type: [String, Array, Object],
       default: null
     }
   }

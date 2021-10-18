@@ -4,8 +4,9 @@
     :is="tag"
     :text="text"
     :disabled="$app.loading || !$app.isOnline"
+    :icon-class="{ 'animate-spin': $app.loading }"
+    icon="refresh"
     class="text-success"
-    icon="redo"
     @click="onClick" />
 </template>
 
