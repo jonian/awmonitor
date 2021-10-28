@@ -39,11 +39,11 @@ const parseLimit = (key, data) => {
   if (limit != null) {
     const resources = Object(data.self_delegated_bandwidth || data.total_resources)
     const staked = parseAmount(resources[`${key}_weight`])
-    const percent = Math.round(limit.used / (limit.max || 1) * 100)
+    const percent = limit.max ? Math.round(limit.used / limit.max * 100) : 100
 
     return { ...limit, percent, staked }
   } else {
-    return { used: 0, available: 0, max: 0, percent: 0, staked: 0 }
+    return { used: 0, available: 0, max: 0, percent: 100, staked: 0 }
   }
 }
 
