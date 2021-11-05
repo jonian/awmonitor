@@ -28,7 +28,6 @@
     "autoprefixer": "^10.4.0",
     "cross-env": "^7.0.2",
     "postcss": "^8.3.10",
-    "postcss-font-display": "^0.2.1",
     "sass": "^1.43.4",
     "tailwindcss": "^2.2.17",
     "unplugin-auto-import": "^0.4.12",
