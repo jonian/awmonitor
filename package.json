@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.4.1",
-    "@vueuse/core": "^6.7.6",
+    "@vueuse/core": "^6.8.0",
     "@vueuse/head": "^0.6.0",
     "dayjs": "^1.10.7",
     "delay": "^5.0.0",
@@ -31,7 +31,7 @@
     "sass": "^1.43.4",
     "tailwindcss": "^2.2.19",
     "unplugin-auto-import": "^0.4.12",
-    "unplugin-vue-components": "^0.17.1",
+    "unplugin-vue-components": "^0.17.2",
     "vite": "^2.6.13",
     "vite-plugin-pages": "^0.18.2",
     "vite-plugin-pwa": "^0.11.3",
