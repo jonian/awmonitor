@@ -5,12 +5,7 @@
 </template>
 
 <script>
-import formatDuration from 'format-duration'
-
-import { dayjs } from '@/utils'
-import { useNow } from '@vueuse/core'
-
-const now = useNow()
+import { diffToNow, formatDuration } from '@/utils'
 
 export default {
   name: 'Countdown',
@@ -22,7 +17,7 @@ export default {
   },
   computed: {
     diff() {
-      return dayjs(this.date || now.value).diff(now.value)
+      return diffToNow(this.date)
     },
     timer() {
       if (this.diff > 0) {

@@ -1,5 +1,6 @@
+export { default as formatDuration } from 'format-duration'
 import { ref } from 'vue'
-import { useRafFn } from '@vueuse/core'
+import { useRafFn, useNow } from '@vueuse/core'
 
 import day from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -9,6 +10,11 @@ day.extend(relativeTime)
 day.extend(utc)
 
 export const dayjs = day
+export const now = useNow()
+
+export const diffToNow = (date) => {
+  return date ? dayjs(date).diff(now.value) : 0
+}
 
 export const timeAgo = date => {
   const val = dayjs.utc(date)
