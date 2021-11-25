@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import { dayjs, timeAgo } from '@/utils'
+import { utcToDate, timeAgo } from '@/utils'
 
 export default {
   name: 'AccountCard',
@@ -138,7 +138,7 @@ export default {
     },
     nextMineAt() {
       if (this.account.nextMine) {
-        return dayjs.utc(this.account.nextMine).toDate()
+        return utcToDate(this.account.nextMine)
       } else {
         return null
       }

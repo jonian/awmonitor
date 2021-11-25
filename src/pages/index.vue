@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { dayjs } from '@/utils'
+import { formatDate } from '@/utils'
 
 export default {
   name: 'HomePage',
@@ -29,7 +29,7 @@ export default {
   computed: {
     updatedAt() {
       if (this.$app.updatedAt) {
-        return dayjs(this.$app.updatedAt).format('MMMM D YYYY, HH:mm:ss')
+        return formatDate(this.$app.updatedAt)
       } else {
         return 'Not updated'
       }

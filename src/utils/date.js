@@ -12,6 +12,13 @@ day.extend(utc)
 export const dayjs = day
 export const now = useNow()
 
+export const utcToDate = date => {
+  return date ? dayjs.utc(date).toDate() : null
+}
+export const formatDate = (date, format) => {
+  return dayjs(date).format(format || 'MMMM D YYYY, HH:mm:ss')
+}
+
 export const diffToNow = (date) => {
   return date ? dayjs(date).diff(now.value) : 0
 }
