@@ -1,13 +1,10 @@
 module.exports = {
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: [
-      './index.html',
-      './src/**/*.vue',
-      './src/**/*.js',
-      './src/**/*.ts'
-    ]
-  },
+  content: [
+    './index.html',
+    './src/**/*.vue',
+    './src/**/*.js',
+    './src/**/*.ts'
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -24,6 +21,7 @@ module.exports = {
       lg: '1024px'
     },
     colors: {
+      current: 'currentColor',
       transparent: 'transparent',
 
       black: '#1A1A1A',
@@ -51,15 +49,6 @@ module.exports = {
     container: {
       center: true,
       padding: '1rem'
-    }
-  },
-  variants: {
-    extend: {
-      backgroundColor: ['disabled'],
-      borderColor:     ['disabled'],
-      cursor:          ['disabled'],
-      opacity:         ['disabled'],
-      textColor:       ['disabled']
     }
   },
   plugins: [
