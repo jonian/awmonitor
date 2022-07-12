@@ -8,14 +8,9 @@ import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import { VitePWA } from 'vite-plugin-pwa'
 
-const importMode = path => {
-  if (path === '/src/pages/index.vue') return 'sync'
-  return 'async'
-}
-
 const HeadlessUiResolver = name => {
   if (name.startsWith('Hui')) {
-    return { importName: name.slice(3), path: '@headlessui/vue' }
+    return { name: name.slice(3), from: '@headlessui/vue' }
   }
 }
 
@@ -49,7 +44,7 @@ export default {
   },
   plugins: [
     Vue(),
-    Pages({ importMode }),
+    Pages(),
     Layouts(),
     AutoImport({
       resolvers: [
